@@ -1,8 +1,8 @@
-# Boolean type:
+########## Boolean type ##########
 isActive = True  # bool
 print(type(isActive))
 
-# Numeric types:
+########## Numeric types ##########
 # int
 num = 12
 print(type(num))
@@ -15,12 +15,12 @@ print(type(myFloat))
 myComplex = 1j
 print(type(myComplex))
 
-# Text type:
+########## Text type ##########
 # str
 name = "Jim"
 print(type(name))
 
-# Sequence types:
+########## Sequence types ##########
 # list
 # - mutable (can add, remove, modify elements)
 # - useful to store dynamic collections
@@ -42,13 +42,12 @@ print(type(myTuples))
 myRange = range(5)
 print(type(myRange))
 
-# Mapping types:
+########## Mapping types ##########
 # dict
 myDict = {"name": "Jim", "id": 10}
 print(type(myDict))
 
-
-# Set types:
+########## Set types ##########
 # set
 # - mutable
 # - duplicates not allowed
@@ -65,7 +64,7 @@ print(type(mySet))
 myFrozenSet = frozenset({"apple", "ball", "cat"})
 print(type(myFrozenSet))
 
-# Binary types:
+########## Binary types ##########
 # bytes
 myByte = b"Hello"
 print(type(myByte))
@@ -77,3 +76,26 @@ print(type(myByteArr))
 # memoryview
 myMemoryView = memoryview(bytes(5))
 print(type(myMemoryView))
+
+
+########## None type ##########
+none = None
+print(type(none))
+
+
+########## Python has ##########
+# - strong typing
+# - dynamic typing (no need to declare types)
+# - type safety (enforced at runtime)
+# - type inference (implicit at runtime)
+
+# Strongly typed language
+x = 10
+y = "5"
+# print(x + y) # TypeError: can't concatenate int and str
+print(x + int(y))  # 15
+
+# Dynamically typed language
+a = 10  # a is an int
+a = "hello"  # a is a str
+print(a)
