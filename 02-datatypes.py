@@ -1,8 +1,8 @@
-########## Boolean type ##########
+# ------------------ Boolean type
 isActive = True  # bool
 print(type(isActive))
 
-########## Numeric types ##########
+# ------------------ Numeric types
 # int
 num = 12
 print(type(num))
@@ -15,12 +15,12 @@ print(type(myFloat))
 myComplex = 1j
 print(type(myComplex))
 
-########## Text type ##########
+# ------------------ Sequence types
+
 # str
 name = "Jim"
 print(type(name))
 
-########## Sequence types ##########
 # list
 # - mutable (can add, remove, modify elements)
 # - useful to store dynamic collections
@@ -30,7 +30,7 @@ print(type(myStrs))
 
 # tuple
 # - immutable (cannot add, remove, modify element after creation)
-# - usefult to store fixed-sized data
+# - useful to store fixed-sized data
 # - faster than list
 # - duplicates allowed
 # - ordered
@@ -42,12 +42,12 @@ print(type(myTuples))
 myRange = range(5)
 print(type(myRange))
 
-########## Mapping types ##########
+# ------------------ Mapping types
 # dict
 myDict = {"name": "Jim", "id": 10}
 print(type(myDict))
 
-########## Set types ##########
+# ------------------ Set types
 # set
 # - mutable
 # - duplicates not allowed
@@ -64,7 +64,7 @@ print(type(mySet))
 myFrozenSet = frozenset({"apple", "ball", "cat"})
 print(type(myFrozenSet))
 
-########## Binary types ##########
+# ------------------ Binary types
 # bytes
 myByte = b"Hello"
 print(type(myByte))
@@ -78,12 +78,12 @@ myMemoryView = memoryview(bytes(5))
 print(type(myMemoryView))
 
 
-########## None type ##########
+# ------------------ None type
 none = None
 print(type(none))
 
 
-########## Python has ##########
+# ------------------ Python has
 # - strong typing
 # - dynamic typing (no need to declare types)
 # - type safety (enforced at runtime)

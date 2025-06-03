@@ -1,4 +1,4 @@
-########## Operators ##########
+# ------------------ Operators
 a = 6
 b = 3
 print(a + b)  # 9
@@ -8,7 +8,7 @@ print(a / b)  # 2.0
 print(a // b)  # 2 integer division, rounded to floor
 print(a % b)  # 0 module, the remainder after integer division
 
-########## Operator Precedence ##########
+# ------------------ Operator Precedence
 # Numerical Precedence follows BEMA order.
 # - B: Brackets
 # - E: Exponents
