@@ -17,19 +17,19 @@ splitString = "First line\nSecond line\nThird line"
 print(splitString)
 
 # Tabs
-tabbedString = "1\t2\t3"
-print(tabbedString)
+tabbedstring = "1\t2\t3"
+print(tabbedstring)
 
 # Quotes
-anotherString = (
+anotherstring = (
     """Hello, my name is "Jim" and I'm going to walk you through the project."""
 )
 
-print(anotherString)
-anotherString = """This is first line
+print(anotherstring)
+anotherstring = """This is first line
 The second line
 The third line"""
-print(anotherString)
+print(anotherstring)
 
 # ------------------ Escape the escape characters
 print("C:\\Users\\tim\\notes.txt")  # use double backslash to escape the escape chars

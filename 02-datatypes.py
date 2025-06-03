@@ -12,8 +12,8 @@ myFloat = 12.45
 print(type(myFloat))
 
 # complex
-myComplex = 1j
-print(type(myComplex))
+mcomplex = 1j
+print(type(mcomplex))
 
 # ------------------ Sequence types
 
@@ -25,8 +25,8 @@ print(type(name))
 # - mutable (can add, remove, modify elements)
 # - useful to store dynamic collections
 # - slower than tuple
-myStrs = ["apple", "ball", "cat"]  # list
-print(type(myStrs))
+mstrs = ["apple", "ball", "cat"]  # list
+print(type(mstrs))
 
 # tuple
 # - immutable (cannot add, remove, modify element after creation)
@@ -35,17 +35,17 @@ print(type(myStrs))
 # - duplicates allowed
 # - ordered
 # - hashable and indexable
-myTuples = ("apple", "ball", "cat")
-print(type(myTuples))
+mtuples = ("apple", "ball", "cat")
+print(type(mtuples))
 
 # range
-myRange = range(5)
-print(type(myRange))
+mrange = range(5)
+print(type(mrange))
 
 # ------------------ Mapping types
 # dict
-myDict = {"name": "Jim", "id": 10}
-print(type(myDict))
+mdict = {"name": "Jim", "id": 10}
+print(type(mdict))
 
 # ------------------ Set types
 # set
@@ -53,29 +53,29 @@ print(type(myDict))
 # - duplicates not allowed
 # - not ordered
 # - not hashable and indexable
-mySet = {"apple", "ball", "cat"}
-print(type(mySet))
+mset = {"apple", "ball", "cat"}
+print(type(mset))
 
 # forzenset
 # - immutable
 # - duplicates not allowed
 # - not ordered
 # - hashable but not indexable
-myFrozenSet = frozenset({"apple", "ball", "cat"})
-print(type(myFrozenSet))
+mfrozenset = frozenset({"apple", "ball", "cat"})
+print(type(mfrozenset))
 
 # ------------------ Binary types
 # bytes
-myByte = b"Hello"
-print(type(myByte))
+mbyte = b"Hello"
+print(type(mbyte))
 
 # bytesarray
-myByteArr = bytearray(5)
-print(type(myByteArr))
+mbytearr = bytearray(5)
+print(type(mbytearr))
 
 # memoryview
-myMemoryView = memoryview(bytes(5))
-print(type(myMemoryView))
+mmemoryview = memoryview(bytes(5))
+print(type(mmemoryview))
 
 
 # ------------------ None type
