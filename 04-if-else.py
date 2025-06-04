@@ -3,7 +3,6 @@
 
 # ------------------ If-else
 # If-else
-
 name = "Jim"
 age = int(input(f"Enter your age, {name}: "))
 if age >= 18:
@@ -24,7 +23,7 @@ while game_on == 1:
         print("You got it")
         game_on = 0
 
-# ------------------ If-else with and, or and not operators
+# If-else with and, or and not operators
 game_on = False
 score = 5
 losing = False
@@ -36,9 +35,9 @@ else:
     print("Game over")
 
 
-# ------------------ Truthy and false values
+# Truthy and falsy values
 mbool = False
-mNone = None
+mnone = None
 answer = 0
 str = ""
 mlist = []
@@ -47,7 +46,7 @@ mdict = {}
 
 if mbool:
     print("True")
-elif mNone:
+elif mnone:
     print("True")
 elif answer:
     print("True")
@@ -62,7 +61,7 @@ elif mdict:
 else:
     print("False")
 
-# ------------------ in and not in
+# in and not in
 word = "hello"
 sub_str = "Hel".casefold()  # lowercase
 if sub_str in word:

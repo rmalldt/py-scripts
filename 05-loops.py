@@ -7,7 +7,7 @@ for char in word:
 for i in range(1, 5):
     print(f"{i}th index")
 
-# Start value defaults to 0
+# Start value defaults to 0 if not provided
 for i in range(5):
     print(f"{i}th index")
 
@@ -52,7 +52,6 @@ print("3.\tLearn C++")
 print("4.\tLearn JavaScript")
 print("5.\tLearn Kotlin")
 print("0.\tExit")
-
 choice = "-"
 while choice != "0":
     choice = input()
