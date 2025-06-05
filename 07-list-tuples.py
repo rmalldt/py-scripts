@@ -57,7 +57,7 @@ def create_list():
     print(numbers)
 
 
-# ------------------ enumerate
+# ----- enumerate
 
 
 def enumerate_items(items):
@@ -65,7 +65,7 @@ def enumerate_items(items):
         print(f"{i} {item} ")
 
 
-# ------------------ Sort reverse
+# ----- Sort reverse
 
 
 def sort_items(items):
@@ -73,7 +73,7 @@ def sort_items(items):
     print(items)
 
 
-# ------------------ Caveats
+# ----- Caveats
 
 
 # This function does not delete the right elements.
@@ -84,7 +84,7 @@ def sort_items(items):
 def delete_unsafe():
     min_limit = 100
     max_limit = 200
-    data = [4, 5, 100, 200, 210, 220]  # Ordered data
+    data = [4, 5, 100, 200, 210, 220]  # sorted data
     for index, value in enumerate(data):
         if (value < min_limit) or (value > max_limit):
             del data[index]
@@ -95,7 +95,7 @@ def delete_unsafe():
 def delete_safe_ordered():
     min_limit = 100
     max_limit = 200
-    data = [4, 5, 100, 200, 210, 220]  # Ordered data
+    data = [4, 5, 100, 200, 210, 220]  # sorted data
 
     stop = 0
     # Range:
@@ -129,7 +129,7 @@ def delete_safe_ordered():
 def delete_safe_unordered():
     min_limit = 100
     max_limit = 200
-    data = [104, 101, 4, 105, 308, 103, 5, 107, 100, 306, 106]  # Unordered data
+    data = [104, 101, 4, 105, 308, 103, 5, 107, 100, 306, 106]  # unsorted data
 
     for index in range(len(data) - 1, -1, -1):
         if data[index] < min_limit or data[index] > max_limit:
@@ -142,7 +142,7 @@ def delete_safe_unordered():
 # ----- Solution 2 for Unsorted Sequence using reversed()
 # Using builtin reversed(sequence) returns a reverse iterator
 # but the caveat is the index returned by reverse iterator
-# relate to the sequence in reverse order as follows:
+# associate with the sequence in reverse order as follows:
 #   - last element       = index 0
 #   - second last elemet = index 1
 #   - so on...
@@ -163,7 +163,7 @@ def delete_safe_unordered():
 def delete_safe_unordered_reversed():
     min_limit = 100
     max_limit = 200
-    data = [104, 101, 4, 105, 308, 103, 5, 107, 100, 306, 106]  # Unordered data
+    data = [104, 101, 4, 105, 308, 103, 5, 107, 100, 306, 106]  # unsorted data
 
     last_index = len(data) - 1
     for index, value in enumerate(reversed(data)):
@@ -174,7 +174,7 @@ def delete_safe_unordered_reversed():
     print(data)
 
 
-# ------------------ Nested Lists
+# ----- Nested Lists
 
 
 def nested_lists():
@@ -190,6 +190,162 @@ def nested_lists():
             print(value)
 
 
+def nested_lists1():
+    menu = [
+        ["tea", "toast"],
+        ["tea", "bacon", "toast"],
+        ["tea", "bacon", "beans", "toast"],
+        ["tea", "bacon", "beans", "sausage", "toast"],
+        ["coffee", "toast"],
+        ["coffee", "bacon", "toast"],
+        ["coffee", "bacon", "beans", "toast"],
+        ["coffee", "bacon", "beans", "sausage", "toast"],
+    ]
+
+    for breakfast in menu:
+        if "sausage" in breakfast:
+            print(breakfast)
+
+            for item in breakfast:
+                print(item)
+
+
+# ----- Join list items
+
+
+def join_items():
+    guitars = ["Fender", "Gibson", "PRS", "Charvel", "Ibanez"]
+
+    # Using join
+    seperator = ", "
+    print(seperator.join(guitars))  # returns single string
+
+    # Using * operator
+    print(*guitars, sep=", ")
+
+    # Using for loop
+    for guitar in guitars:
+        print(guitar, end=", ")
+
+
+# ------------------ Tuples Operations
+# Always enclose tuples with parenthesis
+
+
+# ----- Unpacking tuple
+# Sequences can be unpacked
+# Unpacking tuples makes the code more readeable as we can provide name for each elements
+def unpacking_tuples():
+    # Unpack tuple
+    album = ("One", "Tesseract", 2013)
+
+    name, artist, date = album
+    print(f"Album: {name}")
+    print(f"Band: {artist}")
+    print(f"Release date: {date}")
+
+    for item in enumerate(album):
+        index, value = item
+        print(index, value)
+
+    # Unpack nested tuples
+    albums = [
+        ("One", "Tesseract", 2013),
+        ("Periphery", "Periphery", 2010),
+        ("Silhouettes", "Textures", 2008),
+        ("Animals as Leaders", "Animals as Leaders", 2009),
+        ("Language", "The Contortionists", 2014),
+    ]
+
+    # Unpack tupes approach 1
+    for name, artist, date in albums:
+        print(f"Album: {name:<30} Artist: {artist:<30} Release date: {date:<10} ")
+
+    # Unpack tupes approach 2
+    for album in albums:
+        name, artist, date = album
+        print(f"Album: {name:<30} Artist: {artist:<30} Release date: {date:<10} ")
+
+
+# ----- Nested Tuples
+
+
+def nested_tuples():
+    albums = [
+        (
+            "One",
+            "Tesseract",
+            2011,
+            [
+                (1, "Lament"),
+                (2, "Nacent"),
+                (3, "Concealing Fate"),
+                (4, "Sunrise"),
+                (5, "April"),
+                (6, "Eden"),
+            ],
+        ),
+        (
+            "Periphery",
+            "Periphery",
+            2010,
+            [
+                (1, "Insomnia"),
+                (2, "The Walk"),
+                (3, "Letter Experiment"),
+                (4, "Jetpacks Was Yes!"),
+                (5, "Light"),
+                (6, "All New Materials"),
+                (7, "Buttersnips"),
+                (8, "Icarus Lives!"),
+                (9, "Totla Mad"),
+                (10, "Ow My Feelings"),
+                (11, "Zyglrox"),
+                (12, "Racecar"),
+            ],
+        ),
+        (
+            "One",
+            "Tesseract",
+            2011,
+            [
+                (1, "Lament"),
+                (2, "Nacent"),
+                (3, "Concealing Fate"),
+                (4, "Sunrise"),
+                (5, "April"),
+                (6, "Eden"),
+            ],
+        ),
+        (
+            "One",
+            "Tesseract",
+            2011,
+            [
+                (1, "Lament"),
+                (2, "Nacent"),
+                (3, "Concealing Fate"),
+                (4, "Sunrise"),
+                (5, "April"),
+                (6, "Eden"),
+            ],
+        ),
+        (
+            "One",
+            "Tesseract",
+            2011,
+            [
+                (1, "Lament"),
+                (2, "Nacent"),
+                (3, "Concealing Fate"),
+                (4, "Sunrise"),
+                (5, "April"),
+                (6, "Eden"),
+            ],
+        ),
+    ]
+
+
 # ------------------ Tests
 
 # list_operations()
@@ -200,4 +356,8 @@ def nested_lists():
 # delete_safe_ordered()
 # delete_safe_unordered()
 # delete_safe_unordered_reversed()
-nested_lists()
+# nested_lists()
+# nested_lists1()
+# join_items()
+# unpacking_tuples()
+nested_tuples()
