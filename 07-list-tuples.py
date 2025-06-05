@@ -1,3 +1,10 @@
+import sys
+import os
+
+# Add the parent directory to the path so Python can find folder data
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from data.albums_data import albums
+
 # ------------------ Lists Operations
 
 
@@ -239,10 +246,10 @@ def unpacking_tuples():
     # Unpack tuple
     album = ("One", "Tesseract", 2013)
 
-    name, artist, date = album
+    name, artist, year = album
     print(f"Album: {name}")
     print(f"Band: {artist}")
-    print(f"Release date: {date}")
+    print(f"Release date: {year}")
 
     for item in enumerate(album):
         index, value = item
@@ -258,92 +265,60 @@ def unpacking_tuples():
     ]
 
     # Unpack tupes approach 1
-    for name, artist, date in albums:
-        print(f"Album: {name:<30} Artist: {artist:<30} Release date: {date:<10} ")
+    for name, artist, year in albums:
+        print(f"Album: {name:<30} Artist: {artist:<30} Release date: {year:<10} ")
 
     # Unpack tupes approach 2
     for album in albums:
-        name, artist, date = album
-        print(f"Album: {name:<30} Artist: {artist:<30} Release date: {date:<10} ")
+        name, artist, year = album
+        print(f"Album: {name:<30} Artist: {artist:<30} Release date: {year:<10} ")
 
 
 # ----- Nested Tuples
 
 
 def nested_tuples():
-    albums = [
-        (
-            "One",
-            "Tesseract",
-            2011,
-            [
-                (1, "Lament"),
-                (2, "Nacent"),
-                (3, "Concealing Fate"),
-                (4, "Sunrise"),
-                (5, "April"),
-                (6, "Eden"),
-            ],
-        ),
-        (
-            "Periphery",
-            "Periphery",
-            2010,
-            [
-                (1, "Insomnia"),
-                (2, "The Walk"),
-                (3, "Letter Experiment"),
-                (4, "Jetpacks Was Yes!"),
-                (5, "Light"),
-                (6, "All New Materials"),
-                (7, "Buttersnips"),
-                (8, "Icarus Lives!"),
-                (9, "Totla Mad"),
-                (10, "Ow My Feelings"),
-                (11, "Zyglrox"),
-                (12, "Racecar"),
-            ],
-        ),
-        (
-            "One",
-            "Tesseract",
-            2011,
-            [
-                (1, "Lament"),
-                (2, "Nacent"),
-                (3, "Concealing Fate"),
-                (4, "Sunrise"),
-                (5, "April"),
-                (6, "Eden"),
-            ],
-        ),
-        (
-            "One",
-            "Tesseract",
-            2011,
-            [
-                (1, "Lament"),
-                (2, "Nacent"),
-                (3, "Concealing Fate"),
-                (4, "Sunrise"),
-                (5, "April"),
-                (6, "Eden"),
-            ],
-        ),
-        (
-            "One",
-            "Tesseract",
-            2011,
-            [
-                (1, "Lament"),
-                (2, "Nacent"),
-                (3, "Concealing Fate"),
-                (4, "Sunrise"),
-                (5, "April"),
-                (6, "Eden"),
-            ],
-        ),
-    ]
+    for name, artist, year, songs in albums:
+        print()
+        print(f"Album: {name}")
+        print(f"Artist: {artist}")
+        print(f"Release year: {year}")
+        print("Songs:")
+        for index, song in songs:
+            track_no = f"{index}."
+            print(f"{track_no:<3}{song}")
+
+
+def juke_box():
+    SONG_LIST_INDEX = 3  # song_list is 3rd item in the album tuple starting index 0
+    SONG_TITLE_INDEX = 1  # song_title is 1st index in the song tuple starting index 0
+    on = True
+
+    while on:
+        print("Choose album or press 0 to exit: ")
+        for index, (name, artist, year, songs) in enumerate(albums):
+            album_index = f"{index + 1}."  # display album index from 1
+            print(f"{album_index:<3}{name}")
+
+        choice = int(input())
+        print()
+        if 1 <= choice <= len(albums):
+            # Album index displayed from index 1, therefore albums[choice-1]
+            songs_list = albums[choice - 1][SONG_LIST_INDEX]
+
+            print("Choose song or press 0 to go back to main menu: ")
+            for index, song in songs_list:
+                print(f"{index:<3}{song}")
+
+            song_choice = int(input())
+            if 1 <= song_choice <= len(songs_list):
+                song_title = songs_list[song_choice - 1][SONG_TITLE_INDEX]
+                print(f"Playing: {song_title}\n")
+            print("=" * 40)
+
+        else:
+            on = False
+            print("Goodbye")
 
 
 # ------------------ Tests
@@ -360,4 +335,6 @@ def nested_tuples():
 # nested_lists1()
 # join_items()
 # unpacking_tuples()
-nested_tuples()
+# nested_tuples()
+
+juke_box()
