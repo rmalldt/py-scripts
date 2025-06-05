@@ -20,7 +20,7 @@ for i in range(1, 5):
     for j in range(1, 3):
         print(i, j)
 
-# Continue and Breaks
+# ------------------  Continue and Breaks
 vegetables = ["brocolli", "onion", "greens", "meat", "potato"]
 for item in vegetables:
     if item == "meat":
@@ -44,7 +44,6 @@ while i < 10:
     print(f"{i}th index")
     i += 1
 
-
 print("Please choose your option from the list below:")
 print("1.\tLearn Python")
 print("2.\tLearn Java")
@@ -59,3 +58,14 @@ while choice != "0":
         print("Goodbye!")
     elif choice in "12345":
         print(f"Your choice was {choice}")
+
+# ------------------ Else with Loops
+# In loops, break can be paired with else statement
+# If loop finishes without break, else statement is executed
+for i in range(1, 10):
+    if i % 3 == 0:
+        print("Found multiple of 3")
+        break
+# Else ONLY executes if no multiple of 3 is found
+else:
+    print("No multiple of 3 found")

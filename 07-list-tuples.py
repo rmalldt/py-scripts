@@ -1,32 +1,203 @@
 # ------------------ Lists Operations
-fruits = ["apple", "orange", "banana", "kiwi", "pears"]
-
-for part in fruits:
-    print(part)
-
-# Length
-print("Length:", len(fruits))
-
-# Index access
-print(fruits[0])  # apple
-
-# Slicing
-print(fruits[0:3])  # ['apple', 'orange', 'banana']
-print(fruits[-2])  # kiwi
-print(fruits[0:4:2])  # ['apple', 'banana']
 
 
-# Max Min
-print(min(fruits))  # apple
-print(max(fruits))  # pears
+def list_operations():
+    fruits = ["apple", "orange", "banana"]
 
-# Count
-print("banana".count("na"))  # 2
+    # Length
+    print(f"Len: {len(fruits)}")
 
-# Append
-fruits.append("strawberry")
-fruits
+    # Index access and Slicing
+    print(fruits[0])  # apple
+    print(fruits[0:2])  # ['apple', 'orange']
+    print(fruits[0:3:2])  # ['apple', 'banana']
+    print(fruits[-2])  # orange
+    fruits[0] = "Guava"
+    del fruits[0]
+    del fruits[0:2]
+    print(f"Updated list: {fruits}")
 
-# Enumerate function
-for i, fruit in enumerate(fruits):
-    print(i, fruit)
+    # Append and Extend
+    fruits.append("strawberry")  # add item to the end of the list
+    fruits.extend(["apple", "orange"])  # add lists
+
+    # Insert, Remove and Pop
+    fruits.insert(0, "grapes")  # insert at given index
+    fruits.remove("apple")  # remove first item whose value match
+    fruits.pop()  # remove last item
+
+    # Count: Count the number occurences of given item in the list
+    print(f"Orange count: {fruits.count("orange")}")
+
+    # Min and Max
+    print(f"Min: {min(fruits)}")
+    print(f"Max: {max(fruits)}")
+
+    # Sort: Sort elements in place
+    fruits.sort()
+    print(fruits)
+
+    # Reverse: Reverse elements in place
+    fruits.reverse()
+    print(fruits)
+
+    # Copy: Return a shallow copy of the list
+    new_list = fruits.copy()
+
+    # Clear: Remove all items from the list
+    fruits.clear()
+    print(f"Original list: {fruits}")
+    print(f"New list: {new_list}")
+
+
+def create_list():
+    odd = [1, 3, 5, 7, 9]
+    even = [2, 4, 6, 8]
+    numbers = odd + even  # append list
+    print(numbers)
+
+
+# ------------------ enumerate
+
+
+def enumerate_items(items):
+    for i, item in enumerate(items):
+        print(f"{i} {item} ")
+
+
+# ------------------ Sort reverse
+
+
+def sort_items(items):
+    items.sort(reverse=True)
+    print(items)
+
+
+# ------------------ Caveats
+
+
+# This function does not delete the right elements.
+# It prints [5, 100, 200, 220] instead of [100,200]
+# The problem is the list is mutated within the for loop and the
+# size of the list changes,so, the elements are skipped since the
+# indexes are already processed.
+def delete_unsafe():
+    min_limit = 100
+    max_limit = 200
+    data = [4, 5, 100, 200, 210, 220]  # Ordered data
+    for index, value in enumerate(data):
+        if (value < min_limit) or (value > max_limit):
+            del data[index]
+    print(data)
+
+
+# ----- Solution for Sorted Sequence
+def delete_safe_ordered():
+    min_limit = 100
+    max_limit = 200
+    data = [4, 5, 100, 200, 210, 220]  # Ordered data
+
+    stop = 0
+    # Range:
+    #   - start: 0
+    #   - stop: len(data) (last index is exclusive)
+    for index in range(0, len(data)):
+        if data[index] >= min_limit:
+            stop = index
+            break
+
+    print(f"Min limit index: {stop}")
+    del data[:stop]  # delete upto stop exclusive
+    print(data)
+
+    start = 0
+    # Range:
+    #   - start: len(data) - 1 (inclusive)
+    #   - stop: -1 (need to include the at 0 index)
+    #   - step: -1 (iterate backward where start is greater than stop)
+    for index in range(len(data) - 1, -1, -1):
+        if data[index] <= max_limit:
+            start = index + 1
+            break
+
+    print(f"Max limit index: {stop}")
+    del data[start:]  # delete from start+1 to end of list
+    print(data)
+
+
+# ----- Solution 1 for Unsorted Sequence
+def delete_safe_unordered():
+    min_limit = 100
+    max_limit = 200
+    data = [104, 101, 4, 105, 308, 103, 5, 107, 100, 306, 106]  # Unordered data
+
+    for index in range(len(data) - 1, -1, -1):
+        if data[index] < min_limit or data[index] > max_limit:
+            print(index, data[index])
+            del data[index]
+
+    print(data)
+
+
+# ----- Solution 2 for Unsorted Sequence using reversed()
+# Using builtin reversed(sequence) returns a reverse iterator
+# but the caveat is the index returned by reverse iterator
+# relate to the sequence in reverse order as follows:
+#   - last element       = index 0
+#   - second last elemet = index 1
+#   - so on...
+#   - first element      = index (length-1)
+#
+# BUT the sequence elements are still the 0 indexed i.e.
+#   - first element = index 0
+#   - second element = index 1
+#   - so on...
+#
+# To access the right element from sequence, we need to adjust the index
+# when accessing the element:
+#   - last index = len(sequence) - 1
+#   - correct index = last index - reversed index
+#
+# Using reversed() is tricky so, ONLY use it when absolutely necessary with CAUTION.
+# This approach is faster than using range().
+def delete_safe_unordered_reversed():
+    min_limit = 100
+    max_limit = 200
+    data = [104, 101, 4, 105, 308, 103, 5, 107, 100, 306, 106]  # Unordered data
+
+    last_index = len(data) - 1
+    for index, value in enumerate(reversed(data)):
+        if value < min_limit or value > max_limit:
+            print(last_index - index, data)
+            del data[last_index - index]
+
+    print(data)
+
+
+# ------------------ Nested Lists
+
+
+def nested_lists():
+    even = [2, 4, 6, 8]
+    odd = [1, 3, 5, 7]
+    lists = [even, odd]
+    print(f"Nested List: {lists}")  # [[2, 4, 6, 8], [1, 3, 5, 7]]
+
+    for list in lists:
+        print(list)
+
+        for value in list:
+            print(value)
+
+
+# ------------------ Tests
+
+# list_operations()
+# create_list()
+# enumerate_items(["apple", "ball", "cat"])
+# sort_items([1, 5, 9, 2, 5, 6])
+# delete_unsafe()
+# delete_safe_ordered()
+# delete_safe_unordered()
+# delete_safe_unordered_reversed()
+nested_lists()
