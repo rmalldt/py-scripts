@@ -228,7 +228,6 @@ def string_methods():
 
     # Returns true if string is empty or all chars are ASCII
     print("Is ASCII:", str.isascii())
-    print("Is ASCII:", "\u0030".isdecimal())
 
     # Returns true if all chars are digit
     print("Is digit:", "123".isdigit())
@@ -248,4 +247,4 @@ def string_methods():
 # string_format()
 # split_items()
 # join_items()
-string_methods()
+# string_methods()

@@ -9,8 +9,6 @@ def enumerate_items(items):
 
 # ------------------ sorted()
 # sorted(iter) takes any iterable and return alphabetically sorted lists of characters
-
-
 def sorted_items():
     words = "Hello there, how are you?"
     sorted_words = sorted(words)
@@ -48,8 +46,6 @@ def print_items():
 
 
 # ------------------ list() and tuple()
-
-
 # list() is used to convert sequence to list
 # tuple() is used to convert sequence to tuple
 def list_tuples():
@@ -60,8 +56,15 @@ def list_tuples():
     print(copy)  # ('Tesseract', 'Altered State', 2013)
 
 
-#  enumerate_items()
+# ------------------ ord()
+# Return an integer representing the Unicode code point.
+def ascii_value(char):
+    print(ord(char))
+
+
+# enumerate_items()
 # sorted_items()
 # reversed_items()
 # print_items()
-list_tuples()
+# list_tuples()
+# ascii_value("a")
