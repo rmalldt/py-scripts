@@ -47,7 +47,6 @@ def string_concepts():
 
 
 def string_operations():
-
     parrot = "Norwegian Blue"
 
     # ----- Access element via index
@@ -143,7 +142,7 @@ def string_format():
     print(f"Id: {id}, Name: {name}")
 
     for i in range(1, 5):
-        print(f"Number {i} squared is {i**2:<6.2f} and cubed is {i**3:<8.2f}")
+        print(f"Number {i} squared is {i ** 2:<6.2f} and cubed is {i ** 3:<8.2f}")
 
 
 # ------------------ split() and join()
@@ -167,10 +166,86 @@ def join_items():
     print(result_str)  # Fender, Ibanez, Gibson, PRS, Kiesel
 
 
+# ------------------ String Methods
+
+
+def string_methods():
+    str = "hello there"
+
+    # ----- Count
+    print("Count:", str.count("e"))
+
+    # ----- Find
+    # Returns the first index in the string where specified substring is found
+    # within the specified range (end index is exclusive)
+    print("Find:", str.find("e", 0, 11))
+
+    # Returns the first index in the string where specified substring is found
+    print("Find:", str.find("e"))
+
+    # Returns the last index in the string where specified substring is found
+    print("RFind:", str.rfind("e"))
+
+    # ----- Lowercase, Uppercase and Capitalize
+    print("Lowercase:", str.casefold())
+    print("Uppercase:", str.upper())
+    print("Capitalize:", str.capitalize())
+
+    # ----- Formatting
+    print(str.center(20, "-"))
+
+    # Remove whitespace from start and end
+    print("Strip:", "   kale.com     ".strip())
+    print("LStrip:", "   kale.com     ".lstrip())
+    print("RStrip:", "   kale.com     ".rstrip())
+
+    # Splits string with the specified char
+    print("Split:", "apple,ball,cat".split(","))
+
+    # Searches for the specified string and returns
+    #   - everything before match
+    #   - the match
+    #   - everything after match
+    print("Partition:", "Result = 10".partition("="))
+
+    # Formats the specified values of a dictionary and insert them inside the string's placeholder
+    values = {"name": "Jim", "id": 18}
+    text = "Employee name: {name}, ID: {id}"
+    print("Formatmap:", text.format_map(values))
+
+    # ----- Checks
+    print("Starts with: ", str.startswith("hello"))
+    print("Ends with: ", str.endswith("re"))
+
+    # Returns true if all chars are alphabet
+    print("Is alpha:", str.isalpha())
+
+    # Returns true if all chars are alphanumeric
+    print("Is alphanumeric:", str.isalnum())
+
+    # Check if space
+    print("Is space:", " ".isspace())
+
+    # Returns true if string is empty or all chars are ASCII
+    print("Is ASCII:", str.isascii())
+    print("Is ASCII:", "\u0030".isdecimal())
+
+    # Returns true if all chars are digit
+    print("Is digit:", "123".isdigit())
+
+    # Returns true if all chars are decimal
+    print("Is decimal:", "\u0030".isdecimal())
+    print("Is decimal:", "10".isdecimal())
+
+    # Returns true if all chars are numeric
+    print("Is numeric:", "123".isnumeric())
+
+
 # ------------------ Tests
 
 # string_concepts()
 # string_operations()
 # string_format()
 # split_items()
-join_items()
+# join_items()
+string_methods()

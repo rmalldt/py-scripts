@@ -236,7 +236,7 @@ def join_items():
 
 
 # ------------------ Tuples Operations
-# Always enclose tuples with parenthesis
+"Always enclose tuples with parenthesis"
 
 
 # ----- Unpacking tuple

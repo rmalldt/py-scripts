@@ -60,9 +60,7 @@ def list_tuples():
     print(copy)  # ('Tesseract', 'Altered State', 2013)
 
 
-# ------------------ Tests
-
-# enumerate_items()
+#  enumerate_items()
 # sorted_items()
 # reversed_items()
 # print_items()
