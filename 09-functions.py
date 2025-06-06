@@ -3,18 +3,21 @@
 
 
 # ------------------ Function Annotations
+from ast import arg
+from logging.config import valid_ident
+
+
 def add(a: float, b: float) -> float:
     return a + b
 
 
+# ------------------ Docstring
 def is_palindrome(string: str) -> bool:
     """
-    Check if a string is palindrome.
-
-    A palindrome is a string that reads the same forwards as backwards.
+    Check if a string is palindrome. A palindrome is a string that reads the same forwards as backwards.
 
     Args:
-        str (string): The string to check,
+        str (string): The string to check.
 
     Returns:
         bool: True if `string` is a palindrom, False otherwise
@@ -26,7 +29,7 @@ def is_palindrome(string: str) -> bool:
     return alnum[::-1] == alnum
 
 
-def test_palindrome():
+def test_palindrome() -> None:
     string = input("Enter a word: ")
     lowercase = string.casefold()
     if is_palindrome(lowercase):
@@ -35,10 +38,11 @@ def test_palindrome():
         print(f"{string} is not a palindrome")
 
 
-# ----- Default parameter value
-# ----- Raising Error
+# ------------------ Default parameter value
+# ------------------ Raising Error
 def format_banner(text: str = " ", screen_width: int = 80) -> None:
-    """Print a string centred, with ** either side.
+    """
+    Print a string centred, with ** either side.
 
     Args:
         text (str, optional): The string to print. An asterisk (*) will result
@@ -62,9 +66,9 @@ def format_banner(text: str = " ", screen_width: int = 80) -> None:
         print(output_string)
 
 
-# ----- Keyword argument
+# ------------------ Keyword argument
 # Used to specify the value for specific parameter by providing paramter name
-def create_banner():
+def create_banner() -> None:
     format_banner("*")
     format_banner("Always look on the bright side of life...")
     format_banner("If life seems jolly rotten")
@@ -78,10 +82,7 @@ def create_banner():
     format_banner("*")
 
 
-# ------------------ Docstring
-
-
-def get_int(prompt):
+def get_int(prompt: str) -> int:
     """
     Get an integer from Standard Input (stdin).
 
@@ -99,7 +100,6 @@ def get_int(prompt):
         temp = input(prompt)
         if temp.isnumeric():
             return int(temp)
-
         print(f"{temp} is not a valid number")
 
 
@@ -122,8 +122,60 @@ def fibonacci(n: int) -> int | None:
         result = zero + one
         zero = one
         one = result
-
     return result
+
+
+def fizzbuzz(num: int) -> str:
+    """
+    Play fizz buzz
+
+    Args:
+        num (int): The number to check
+
+    Returns:
+        str: 'fizz' if the number is divisible by 3
+        'buzz' if the number is divisible by 5.
+        'fizzbuzz' if the number is divisible by both 3 and 5.
+        The number as a string otherwise.
+    """
+    if num % 15 == 0:
+        return "fizz buzz"
+    elif num % 3 == 0:
+        return "fizz"
+    elif num % 5 == 0:
+        return "buzz"
+    else:
+        return str(num)
+
+
+def test_fizzbuzz() -> None:
+    for i in range(1, 100):
+        print(fizzbuzz(i))
+
+
+# ------------------ Spread arguments (*args)
+def spread_args() -> None:
+    values = [1, 2, 3, 4, 5]
+
+    print(values)  # [1, 2, 3, 4, 5]
+
+    # Unpack the values
+    print(*values)  # 1 2 3 4 5
+    print(1, 2, 3, 4, 5)  # same as above
+
+
+def variable_args(*args) -> None:
+    print(args)  # pack the variable arguments
+
+    for x in args:
+        print(x)
+
+
+def test_arguments(p1, p2, *args, k, **kwargs) -> None:
+    print(f"positional arguments:........{p1}, {p2}")
+    print(f"variable arguments:..........{args}")
+    print(f"keyword:.....................{k}")
+    print(f"variable arguments keyword:..{kwargs}")
 
 
 # ------------------ Tests
@@ -138,6 +190,12 @@ def fibonacci(n: int) -> int | None:
 
 # print(get_int.__doc__) # get Docstring of get_input function
 
-create_banner()
+# create_banner()
 
 # print(fibonacci(12))
+# test_fizzbuzz()
+
+# spread_args()
+# variable_args(1, 2, 3, 4, 5)
+
+test_arguments(1, 2, 3, 4, 5, k=6, key1=7, key2=8)
