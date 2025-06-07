@@ -1,5 +1,4 @@
 # ------------------ Dictionaries
-from termios import IEXTEN
 
 
 emp = {
@@ -8,6 +7,47 @@ emp = {
     "address": "Uxbridge, London",
     "role": "DevOps",
 }
+
+
+# ------------------ Get key, values and items
+def get_keys_values_items(data: dict) -> None:
+    # Get keys
+    print(f"Keys: {data.keys()}")
+    print(f"Keys: {list(data)}")
+
+    # Get values
+    print(f"Values: {data.values()}")
+
+    # Get items
+    print(f"Items: {data.items()}")
+
+
+# ------------------ Create new dictionary
+def create_new_dict() -> None:
+
+    # Create dictionary with dict literal
+    a = {"one": 1, "two": 2, "three": 3}
+
+    # Create dictionary using dict constructor
+    b = dict(one=1, two=2, three=3)
+    c = dict({"one": 1, "two": 2, "three": 3})
+    d = dict([("one", 1), ("two", 2), ("three", 3)])
+    e = dict(zip(["one", "two", "three"], [1, 2, 3]))
+    print(f"All dictionaries are equal: {a == b == c == d == e} ")
+
+    # Create dictionary fromkeys()
+    keys = ("k1", "k2", "k3")
+    new_dict = dict.fromkeys(keys, "default")
+    print(f"New dict: {new_dict}")
+
+    # Create a new shallow copy of the dictionary with copy()
+    dict_copy = new_dict.copy()
+    print(f"Dict copy: {dict_copy}")
+
+    # Remove all elements from dictionary with clear()
+    new_dict.clear()
+    print(f"New dict: {new_dict}")
+    print(f"Dict copy: {dict_copy}")
 
 
 # ------------------ Access items
@@ -58,6 +98,7 @@ def modify_dict(info: dict):
     # Update existing items
     info["role"] = "Cloud/DevOps"
     info["address"] = "Feltham, London"
+    info.update({"experience": 5})
     print(info)
 
     # Remove item using del
@@ -67,6 +108,9 @@ def modify_dict(info: dict):
     # Remove using pop(), if key does not exist, return None
     removed = info.pop("manager", None)
     print(f"Removed: {removed}")
+
+    removed_lastitem = info.popitem()
+    print(f"Removed last item: {removed_lastitem} ")
 
 
 def dict_menu() -> None:
@@ -137,10 +181,10 @@ def nested_data() -> None:
 
 # ------------------ Tests
 
+# get_keys_values_items(emp)
+# create_new_dict()
 # access_value(emp)
 # iterate_dict(emp)
-modify_dict(emp)
+# modify_dict(emp)
 # dict_menu()
-
-
 # nested_data()
