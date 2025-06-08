@@ -62,6 +62,22 @@ def ascii_value(char):
     print(ord(char))
 
 
+# ------------------ chr()
+# Return the string representing a character whose Unicode code point is
+# the passed integer
+def char_value(unicode):
+    print(chr(unicode))
+
+
+# ------------------ hash()
+# Return the hash value of the object (if it has one).
+# Hash values are integers which are used to quickly compare dictionary keys
+# during a dictionary lookup.
+def hash_test(string):
+    hashed = hash(string)
+    print(f"Hash value of {string}: {hashed}")
+
+
 # ------------------ Test
 
 # enumerate_items()
@@ -70,3 +86,5 @@ def ascii_value(char):
 # print_items()
 # list_tuples()
 # ascii_value("a")
+char_value(97)
+# hash_test("apple")

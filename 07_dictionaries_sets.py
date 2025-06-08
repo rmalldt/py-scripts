@@ -236,4 +236,7 @@ def test_manul_deepcopy():
 # modify_dict(emp)
 # dict_menu()
 # nested_data()
-test_manul_deepcopy()
+# test_manul_deepcopy()
+
+keys = [1, 2] * 10
+print(keys)
