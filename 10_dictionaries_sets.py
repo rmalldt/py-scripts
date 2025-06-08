@@ -1,3 +1,5 @@
+import copy
+
 # ------------------ Dictionaries
 
 
@@ -9,22 +11,8 @@ emp = {
 }
 
 
-# ------------------ Get key, values and items
-def get_keys_values_items(data: dict) -> None:
-    # Get keys
-    print(f"Keys: {data.keys()}")
-    print(f"Keys: {list(data)}")
-
-    # Get values
-    print(f"Values: {data.values()}")
-
-    # Get items
-    print(f"Items: {data.items()}")
-
-
 # ------------------ Create new dictionary
 def create_new_dict() -> None:
-
     # Create dictionary with dict literal
     a = {"one": 1, "two": 2, "three": 3}
 
@@ -50,35 +38,26 @@ def create_new_dict() -> None:
     print(f"Dict copy: {dict_copy}")
 
 
-# ------------------ Access items
-def access_value(info: dict) -> None:
+# ------------------ Get key, values and items
+def get_keys_values_items(data: dict) -> None:
+    # Get keys
+    print(f"Keys: {data.keys()}")
+    print(f"Keys: {list(data)}")
+
+    # Get values
+    print(f"Values: {data.values()}")
+
+    # Get items
+    print(f"Items: {data.items()}")
+
     # Access value using indexing.
     # Raises KeyError if key doesn't exist however it is faster
-    id = info["id"]
+    id = data["id"]
 
     # Access value get method. Returns None if key does not exist.
     # It is used if unsure about key
-    name = info.get("name")
-
+    name = data.get("name")
     print(f"Id: {id}, Name: {name} ")
-
-
-# ------------------ Iterate dictionary
-def iterate_dict(info: dict) -> None:
-    # Approach 1: Iterate unpack key
-    for key in info:
-        print(key, info[key], sep=": ")
-
-    # Approach 2:
-    # Use dict.items() to iterate over dictionary that unpack key and value.
-    # dict.items() is like using enumerate(sequence) that gives index and value.
-    for key, value in info.items():
-        print(key, value, sep=", ")
-
-    # Note: enumerate() can also be used with dictionary to get index.
-    # In fact enumerate can be used with any iterable type
-    for index, key in info:
-        print(index, key)
 
 
 # ------------------ Modify dictionary items
@@ -109,8 +88,27 @@ def modify_dict(info: dict):
     removed = info.pop("manager", None)
     print(f"Removed: {removed}")
 
+    # Remove last inserted key:value pair
     removed_lastitem = info.popitem()
     print(f"Removed last item: {removed_lastitem} ")
+
+
+# ------------------ Iterate dictionary
+def iterate_dict(info: dict) -> None:
+    # Approach 1: Iterate unpack key
+    for key in info:
+        print(key, info[key], sep=": ")
+
+    # Approach 2:
+    # Use dict.items() to iterate over dictionary that unpack key and value.
+    # dict.items() is like using enumerate(sequence) that gives index and value.
+    for key, value in info.items():
+        print(key, value, sep=", ")
+
+    # Note: enumerate() can also be used with dictionary to get index.
+    # In fact enumerate can be used with any iterable type
+    for index, key in info:
+        print(index, key)
 
 
 def dict_menu() -> None:
@@ -165,22 +163,72 @@ def nested_data() -> None:
         }
     }
 
-    # using tuples
+    # Using tuples
     for key, value in recipes_tuple.items():
         print(key, value, sep=": ")
-        for ingredient, quantity in value:
+        for ingredient, quantity in value:  # list of tuples
             print(ingredient, quantity, sep=", ")
 
-    # using dict
+    # Using dict
     for key, value in recipes_dict.items():
         print(key, value, sep=": ")
-
-        for ingredient, quatity in value.items():
+        for ingredient, quantity in value.items():  # dictonary
             print(ingredient, quantity, sep=", ")
+
+
+def shallowcopy_deepcopy() -> None:
+    # ----- Shallow copy
+
+    # Works since the dictionary doesn't have nested array or objects
+    items = {"one": 1, "two": 2, "three": 3}
+    items_copy = items.copy()
+    items["one"] = 1000  # mutate
+    print(items)  # {'one': 1000, 'two': 2, 'three': 3}
+    print(items_copy)  # {'one': 1, 'two': 2, 'three': 3}
+
+    # Doesn't work in this case as the dictionary has nested items
+    # which are mutable
+    nested = {
+        "numbers": {"one": 1, "two": 2, "three": 3},
+        "letters": ["a", "b", "c"],
+    }
+
+    nested_copy = nested.copy()
+    nested["numbers"]["one"] = 1000
+    nested["letters"].append("d")
+    print(nested)
+    print(nested_copy)
+
+    # ----- Deep copy using the deepcopy()
+
+    nested_deepcopy = copy.deepcopy(nested)
+    nested["numbers"]["one"] = 1
+    nested["letters"].pop()
+    print(nested)
+    print(nested_deepcopy)
+
+
+def manual_deepcopy(d: dict) -> dict:
+    new_dict = {}
+    for key, value in d.items():
+        new_value = value.copy()
+        new_dict[key] = new_value
+    return new_dict
+
+
+def test_manul_deepcopy():
+    mdict = {
+        "nums": {"one": 1, "two": 2, "three": 3},
+        "letters": ["a", "b", "c"],
+    }
+
+    copy = manual_deepcopy(mdict)
+    mdict["nums"]["one"] = 1000
+    print(mdict)
+    print(copy)
 
 
 # ------------------ Tests
-
 # get_keys_values_items(emp)
 # create_new_dict()
 # access_value(emp)
@@ -188,3 +236,4 @@ def nested_data() -> None:
 # modify_dict(emp)
 # dict_menu()
 # nested_data()
+test_manul_deepcopy()
