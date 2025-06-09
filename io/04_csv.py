@@ -1,5 +1,6 @@
 from ast import mod
 import csv
+from zipapp import create_archive
 
 # ------------------ Read CSV
 
@@ -75,17 +76,18 @@ def read_csv_unformatted():
 
 
 def read_csv_dict():
-    filepath = "../data/my_cereals.csv"
-
+    filepath = "../data/cereal_grains.csv"
+    cereals = {}
     with open(filepath, encoding="utf-8", newline="") as file:
         # Configure the heading to be lowercase for consistency
-        # headings = file.readline().strip("\r\n").split(",")
-        # for index, heading in enumerate(headings):
-        #     headings[index] = heading.casefold()
-
-        reader = csv.DictReader(file, quoting=csv.QUOTE_NONNUMERIC)
+        headings = file.readline().strip("\r\n").split(",")
+        for index, heading in enumerate(headings):
+            headings[index] = heading.strip('"').casefold()
+        reader = csv.DictReader(file, fieldnames=headings)
         for row in reader:
-            print(row)
+            cereals[row["cereal"].casefold()] = row
+
+    print(cereals)
 
 
 # ------------------ Write CSV
