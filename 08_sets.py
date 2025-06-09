@@ -1,8 +1,14 @@
-# ------------------ Tests
-"""Sets are defined using {...}"""
+from operator import le
+import sys
+import os
 
-farm_animals = {"hen", "cow", "sheep", "horse", "goat"}
-wild_animals = {"lion", "tiger", "elephant", "horse", "goat"}
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from data.prescriptions import *
+
+# ------------------ Set operations
+
+
+"""Sets are defined using {...}"""
 
 
 def create_set():
@@ -32,9 +38,14 @@ def create_set():
 
 
 def set_operations() -> None:
+    farm_animals = {"hen", "cow", "sheep", "horse", "goat"}
+    wild_animals = {"lion", "tiger", "elephant", "horse", "goat"}
+
     # Set membership
     if "hen" in farm_animals:
         print(f"hen is present in set {farm_animals} ")
+
+    # ----- All set operations return a new set
 
     # Union set
     union = farm_animals.union(wild_animals)  # union
@@ -56,6 +67,16 @@ def set_operations() -> None:
     symmetric_diff = farm_animals ^ wild_animals
     print(f"Symmetric difference: {symmetric_diff}")
 
+    # Superset and Subset
+    a = {1, 2, 3, 4, 5}
+    b = {3, 4}
+
+    print(a.issuperset(b))
+    print(a >= b)  # a is superset of b
+
+    print(b.issubset(a))
+    print(b <= a)  # b is subset of a
+
 
 def modify_set() -> None:
     numbers = {1, 2, 3}
@@ -76,8 +97,47 @@ def modify_set() -> None:
     numbers.remove(4)
     print(numbers)
 
+    # pop(): It removes arbitrary item from set
+    print(numbers.pop())
+
     numbers.clear()
     print(numbers)
+
+
+def prescription_trial():
+    trial_patients = ["Denise", "Eddie", "Frank", "Georgia", "Kenny"]
+
+    for patient in trial_patients:
+        prescription = patients[patient]
+
+        # In this case, remove is appropriate because we do not want
+        # want to add the add the drug unless we can remove another
+        # appropriate drug as below:
+        # Only add `edoxaban` if `warfarin` exist and is removed.
+        try:
+            prescription.remove(warfarin)
+            prescription.add(edoxaban)
+        except KeyError:
+            print(
+                f"Patient {patient} is not taking {warfarin}. "
+                f"Please remove {patient} from the trial."
+            )
+
+        print(patient, prescription)
+
+
+def prescription_drug_interaction():
+    drugs_to_watch = set()
+
+    # Data structure:
+    # - adverse_interaction => list of interactions
+    # - interaction         => set of drugs
+    for interaction in adverse_interactions:
+        # Add elements from other sets to create a union but 'update'
+        # is more efficient than 'union' because union returns new set
+        # each time while update just updates the same set.
+        drugs_to_watch.update(interaction)
+    print(sorted(drugs_to_watch))  # list of all unique interactions
 
 
 def set_to_list():
@@ -87,7 +147,7 @@ def set_to_list():
     unique_colors = sorted(set(colors))
     print(f"List of unique items sorted: {unique_colors}")
 
-    # Create a set to remove duplicates and also preseve the original order
+    # Create a set to remove duplicates and also preserve the original order
     unique_colors = list(dict.fromkeys(colors))
     print(f"List of unique sorted items with original order: {unique_colors}")
 
@@ -96,5 +156,9 @@ def set_to_list():
 
 # create_set()
 # set_operations()
-modify_set()
-# set_to_list()
+# modify_set()
+
+# prescription_trial()
+# prescription_drug_interaction()
+
+set_to_list()
