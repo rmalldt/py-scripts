@@ -161,4 +161,4 @@ def set_to_list():
 # prescription_trial()
 # prescription_drug_interaction()
 
-set_to_list()
+# set_to_list()
