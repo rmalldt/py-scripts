@@ -2,6 +2,7 @@ import os
 import sys
 import os
 from os import SEEK_CUR, path
+import hashlib
 from typing import BinaryIO
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -25,7 +26,6 @@ def bytes_info():
 
 
 # ------------------ Bytes and bitmap
-
 
 """
 Bitmap file structure:
@@ -146,7 +146,6 @@ advantage of the high 11 bits of the first 2 bytes are all set to 1.
 
 The solution that ID3 uses is to make sure that the tah doesn't contain any pair of 
 bytes that have their high 11 bits set.
-
 """
 
 
@@ -362,8 +361,30 @@ def read_id3():
                     break
 
 
+# ------------------ Bytes and file hash
+
+
+def sha_checksum(filename: str, hash_to_check: str) -> None:
+    with open(filename, "rb") as downloadedfile:
+        contents = downloadedfile.read()
+
+    file_hash = hashlib.sha256(contents).hexdigest()
+    print(file_hash)
+
+    if file_hash != hash_to_check:
+        print(f"The file {filename} has been modified")
+    else:
+        print(f"File {filename} hash is correct")
+
+
 # ------------------ Test
 
 # bytes_info()
+
 # invert_bitmap()
-read_id3()
+
+# read_id3()
+
+colorama_hash = "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"
+colorama_filepath = "../data/wheels/colorama-0.4.6-py2.py3-none-any.whl"
+sha_checksum(colorama_filepath, colorama_hash)
