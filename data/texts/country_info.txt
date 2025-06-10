@@ -120,7 +120,7 @@ Kuwait|Kuwait City|KW|KWT|+965|UTC+03:00|Kuwaiti dinar
 Kyrgyzstan|Bishkek|KG|KGZ|+996|UTC+06:00|Kyrgyzstani som
 Laos|Vientiane|LA|LAO|+856|UTC+07:00|Lao kip
 Latvia|Riga|LV|LVA|+371|UTC+03:00|Latvian lats
-Lebanon|Beirut|LB|LBN|+961|UTC+02:00|Lebanese pound
+Lebanon|Beirut|LB|LBN|+961|UTC+02:00|Lebanese pound   
 Lesotho|Maseru|LS|LSO|+266|UTC+02:00|Lesotho loti
 Liberia|Monrovia|LR|LBR|+231|UTC|Liberian dollar
 Libya|Tripoli|LY|LBY|+218|UTC+02:00|Libyan dinar
