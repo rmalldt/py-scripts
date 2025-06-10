@@ -46,13 +46,24 @@ def next_invoice_number(invoice_number: str) -> str:
     return new_invoice_number
 
 
-def record_invoice(invoice_file: TextIO, company: str, amount: float) -> None:
+def record_invoice(
+    invoice_file: TextIO,
+    company: str,
+    amount: float,
+    last_line_ptr: int = 0,
+) -> int:
     """Create a new invoice number, and write it to a file on disk.
 
     :param invoice_file: An open text file, opened using r+.
     :param company: The name of the company being invoiced.
     :param amount: The amount of the invoice.
+    :param last_line_ptr: The position of the start of the last line in the file.
+    This will be obtained by the previous call to `record_invoice`.
+    :return: The position of the start of the last line in the file.
+    This can be used in subsequent calls to `record_invoice`
     """
+    # Set the file pointer to the last file pointer position
+    invoice_file.seek(last_line_ptr, SEEK_SET)
     last_row = ""
     for line in invoice_file:
         print("*", end="")
@@ -64,15 +75,19 @@ def record_invoice(invoice_file: TextIO, company: str, amount: float) -> None:
     else:
         year = get_year()
         new_invoice_number = f"{year}-{1:04d}"
+
+    # Get current file pointer position
+    last_line_ptr = invoice_file.tell()
     print(f"{new_invoice_number}\t{company}\t{amount}", file=invoice_file)
-
-
-invoice_path = "../data/csvs/invoices.csv"
+    # return file pointer position to be used for next write
+    return last_line_ptr
 
 
 def write_invoice():
+    invoice_path = "../data/csvs/invoices.csv"
     with open(invoice_path, mode="r+") as invoices:
         record_invoice(invoices, "Roaderunner", 100.80)
+        record_invoice(invoices, "Squirrel Storage", 300.80)
 
 
 # Test code:
@@ -102,5 +117,7 @@ def test_code():
 
 
 # ------------------ Test
-# test_code()
+
+
 write_invoice()
+# test_code()
