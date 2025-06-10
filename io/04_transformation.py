@@ -32,8 +32,8 @@ def transform_seq_dict_zip(filepath):
         writer = csv.DictWriter(output_file, fieldnames=keys)
         writer.writeheader()
         for row in albums:
-            zip_obj = zip(keys, row)
-            album_dict = dict(zip_obj)
+            zip_obj = zip(keys, row)  # get iterator of zipped object
+            album_dict = dict(zip_obj)  # create dict passing the iterator
             print(album_dict)
             writer.writerow(album_dict)
 
@@ -43,6 +43,5 @@ def transform_seq_dict_zip(filepath):
 destfile = "../data/csvs/albums.csv"
 
 # write_csv(destfile)
-
-zip_test()
-# transform_seq_dict_zip(destfile)
+# zip_test()
+transform_seq_dict_zip(destfile)
