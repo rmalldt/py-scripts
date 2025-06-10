@@ -86,8 +86,11 @@ def record_invoice(
 def write_invoice():
     invoice_path = "../data/csvs/invoices.csv"
     with open(invoice_path, mode="r+") as invoices:
-        record_invoice(invoices, "Roaderunner", 100.80)
-        record_invoice(invoices, "Squirrel Storage", 300.80)
+        last_line = record_invoice(invoices, "ACME Roaderunner", 100.80)
+        last_line = record_invoice(invoices, "Squirrel Storage", 200.50, last_line)
+        last_line = record_invoice(invoices, "Squirrel Storage", 300.50, last_line)
+        last_line = record_invoice(invoices, "Squirrel Storage", 200.50, last_line)
+        last_line = record_invoice(invoices, "ACME Roaderunner", 100.90, last_line)
 
 
 # Test code:
