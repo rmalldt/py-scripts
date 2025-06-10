@@ -204,3 +204,4 @@ cereals_filepath = "../data/csvs/cereals.csv"
 
 # write_csv(cereals_filepath)
 write_csv_dictwriter()
+# read_csv_write_python()
