@@ -157,7 +157,7 @@ def parse_data_to_dict(sourcefile):
 # ------------------ Tests
 
 sourcepath = "../data/texts/poem.txt"
-# open_file(sourcepath)
+open_file(sourcepath)
 # with_file(sourcepath)
 # read_file(sourcepath)
 # readline_file(sourcepath)
