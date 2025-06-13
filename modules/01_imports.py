@@ -1,5 +1,5 @@
-import turtle
-from math import radians, cos
+import turtle  # import the whole module
+from math import radians, cos  # import specific functions from the module
 
 # ------------------ Square
 
@@ -48,4 +48,4 @@ turtle.speed("fast")
 # squares()
 
 # encircled_square(300)
-encircled_squares()
+# encircled_squares()
