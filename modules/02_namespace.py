@@ -3,15 +3,12 @@
 import math
 import random
 
-
-print(dir())  # list current modules namespaces
-
 x = 10  # global namespace
 
 
 def foo():
     x = 5  # local namespace
-    print(f"Local: {x}")  # prints 5
+    print(f"Local: {x}")  # built-in namespace
 
     def bar():
         x = 0
@@ -34,3 +31,4 @@ def func():
 # print(f"Global: {x}")  # prints 10
 
 func()
+print(f"Globals: {globals()}")
