@@ -4,6 +4,9 @@ import math
 import random
 
 x = 10  # global namespace
+print(f"Global: {x}")  # prints 10
+print(f"Global modules: {dir()}")  # lists all modules in global namespace
+print(f"Built-in modules: {dir(__builtins__)}")  # print
 
 
 def foo():
@@ -27,8 +30,9 @@ def func():
 
 
 # ------------------ Test
+
 # foo()
-# print(f"Global: {x}")  # prints 10
 
 func()
 print(f"Globals: {globals()}")
+print(f"Global object item: {globals()['x']}")
