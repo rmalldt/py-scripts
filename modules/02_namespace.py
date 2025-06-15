@@ -20,5 +20,17 @@ def foo():
     bar()
 
 
-foo()
-print(f"Global: {x}")  # prints 10
+def func():
+    a = 100
+    b = 50
+
+    res = a + b
+    print(f"Inside local function namespace is: {dir()}")
+    print(f"Locals: {locals()}")
+
+
+# ------------------ Test
+# foo()
+# print(f"Global: {x}")  # prints 10
+
+func()
