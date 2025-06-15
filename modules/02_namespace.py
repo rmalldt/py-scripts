@@ -1,4 +1,11 @@
-print(dir())
+# These modules are imported in this current module.
+# The math and random functions can scope is the entire current module.
+import math
+import random
+
+
+print(dir())  # list current modules namespaces
+
 x = 10  # global namespace
 
 
