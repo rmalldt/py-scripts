@@ -19,7 +19,7 @@ def foo():
     def bar():
         x = 0  # local scope (it is also a free variable since it is already defined in enclosing scope)
         print(f"Nested local: {x}")  # prints 0
-        # nested function can access variables of enclosing function
+        # inner function can access variables of enclosing function
         print(f"Greeting: {greeting}")
 
     bar()
