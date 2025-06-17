@@ -33,6 +33,9 @@ def func():
     print(f"Locals: {locals()}")
 
 
+# ------------------ Free variable
+
+
 def free_variable():
     greeting = "hello"
 
@@ -57,7 +60,9 @@ def nonlocal_modify_enclosing_variable():
     print(f"Enclosing greeting: {greeting}")  # prints Hi
 
 
-# Global variable
+# ------------------ Global variable
+
+
 result = 0
 
 
@@ -78,6 +83,13 @@ add_global(1, 1)
 print(f"Result: {result}")  # prints 2
 
 
+def add_better(a: int, b: int) -> int:
+    return a + b
+
+
+sum = add_better
+print(f"Sum: {sum}")
+
 # ------------------ Test
 
 # foo()
@@ -85,7 +97,6 @@ print(f"Result: {result}")  # prints 2
 
 # free_variable()
 # nonlocal_modify_enclosing_variable()
-
 
 # print(f"Globals: {globals()}")
 # print(f"Global object item: {globals()['x']}")
