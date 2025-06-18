@@ -75,12 +75,15 @@ def datetime_arithmetic():
     uk_time = datetime(year, month, day, hour, minute, tzinfo=uk_tz)
     print(f"UK time: {uk_time}")
 
-    utc_time = uk_time.astimezone(tz=timezone.utc)  # convert to UTC time
+    # Convert to UTC timezone gives the local timezone with no DST
+    utc_time = uk_time.astimezone(tz=timezone.utc)
     print(f"UK UTC time: {utc_time}")
 
-    utc_time = utc_time + td  # perform datetime arithmetic
+    # Perform datetime arithmetic
+    utc_time = utc_time + td
     print(f"UK UTC time with deltatime: {utc_time}")
 
+    # Convert back to original timezone with DST
     uk_time = utc_time.astimezone(tz=uk_tz)
     print(f"UK time with deltatime: {uk_time}")
 
