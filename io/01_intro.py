@@ -1,9 +1,5 @@
 # ------------------ Test data
 
-
-from ast import mod
-
-
 data = [
     (1, "Insomnia"),
     (2, "The Walk"),
