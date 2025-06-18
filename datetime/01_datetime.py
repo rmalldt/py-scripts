@@ -3,6 +3,7 @@ import locale
 
 
 def datetime_intro():
+    # Create date
     start = datetime.date(2025, 6, 13)
     print(start)
 
@@ -11,12 +12,20 @@ def datetime_intro():
     day = start.day
     print(f"Year: {year}, month: {month}, day: {day}")
 
+    # Get current datetime using now() [RECOMMENDED]
+    now = datetime.datetime.now()
+    print(f"Now: {now}")
+
+    # Get current datetime using today() [DO NOT USE]
+    today = datetime.datetime.today()
+    print(f"Today: {today}")
+
 
 def formatted_date():
     today = datetime.date.today()
 
     # Formatted datetime
-    # strftime (string-format-time) => string to time
+    # strftime (string-format-time) => time to string
     #   - %A = name of the day of the week
     #   - %d = day of the month
     #   - %B = month name
@@ -57,8 +66,8 @@ def time_delta():
 
 # ------------------ Test
 
-# datetime_intro()
+datetime_intro()
 # formatted_date()
 # locale_intro()
 
-time_delta()
+# time_delta()
