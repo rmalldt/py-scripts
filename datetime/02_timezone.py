@@ -26,12 +26,13 @@ def timezone_intro():
     germany_now = datetime.now(tz=zoneinfo.ZoneInfo("Europe/Berlin"))
     print(f"Germany now: {germany_now}")
 
-    # UTC is a time standard
-    # It is used to compare with other timezones
-    utc_now = datetime.now(timezone.utc)
+    # UTC is a time standard. It is used to compare with other timezones
+    # It doesn’t include the DST information
+    utc_now = datetime.now(tz=timezone.utc)
     print(f"UTC now: {utc_now}")
 
-    local_now = utc_now.astimezone()
+    # Use astimezone() to get DST information
+    local_now = utc_now.astimezone()  # defaults to current locale
     print(f"Local now: {local_now}")
 
     new_york_tz = zoneinfo.ZoneInfo("America/New_York")
@@ -91,11 +92,11 @@ def datetime_arithmetic():
 # ------------------ Test
 
 # time_intro()
-# timezone_intro()
+timezone_intro()
 
 # timezone_keys()
 
 # zones = ("Europe/Paris", "Europe/Berlin", "Asia/Hong_Kong", "Africa/Nairobi")
 # get_timezone(zones)
 
-datetime_arithmetic()
+# datetime_arithmetic()
