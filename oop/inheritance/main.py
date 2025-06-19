@@ -1,7 +1,7 @@
 from linecache import clearcache
 
 from player import Player
-from enemy import Enemy, Troll
+from enemy import Enemy, Nazgul, NazgulKing, Troll
 
 # ------------------ Test
 
@@ -27,3 +27,18 @@ print(troll2)
 
 troll3 = Troll("Super Big Troll", 20, 10)
 print(troll3)
+
+
+print("*" * 80)
+nazgul_rider = Nazgul("Black rider")
+print(nazgul_rider)
+nazgul_rider.slash()
+
+
+# while nazgul.alive:
+#     nazgul.take_damage(5)
+#     print(nazgul)
+
+print("*" * 80)
+nazgul_king = NazgulKing("Nazgul King")
+print(nazgul_king)

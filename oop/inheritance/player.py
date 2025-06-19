@@ -22,7 +22,6 @@ class Player:
             print("Lives can't be negative value")
             self._lives = 0
 
-
     def _get_level(self):
         return self._level
 
@@ -45,7 +44,7 @@ class Player:
 
     @score.setter
     def score(self, score):
-        self._score= score
+        self._score = score
 
     def __str__(self) -> str:
         return f"Name: {self.name}, Lives: {self.lives}, Level: {self.level}, Score: {self.score}"
