@@ -21,16 +21,17 @@ def walk_dir_format(filepath: str):
             print(f"First split: {first_split}")
             second_split = os.path.split(first_split[0])
             print(f"Second split: {second_split}")
-
             for f in files:
-                song_details = f[:-5].split(" - ")  # remove extension
+                song_details = f[:-5].split(" - ")  # remove extension (last 5 chars)
                 print(song_details)
             print("*" * 40)
 
 
 def find_albums(filepath, name):
+    caps_name = name.upper()
     for path, directories, files in os.walk(filepath, topdown=True):
-        for artist in fnmatch.filter(directories, name):
+        # for artist in fnmatch.filter(directories, name):
+        for artist in (d for d in directories if fnmatch.fnmatch(d.upper(), caps_name)):
             subdir = os.path.join(path, artist)
             for album_path, albums, _ in os.walk(subdir):
                 for album in albums:
@@ -48,13 +49,13 @@ def list_songs(albums):
 
 dir_path = "data/music"
 
-# walk_dir(dir_path)
+walk_dir(dir_path)
 # walk_dir_format(dir_path)
 
-album_list = find_albums(dir_path, "Black*")
-# for a in album_list:
-#     print(a)
+# album_list = find_albums(dir_path, "black*")
+# # for a in album_list:
+# #     print(a)
 
-song_list = list_songs(album_list)
-for a in song_list:
-    print(a)
+# song_list = list_songs(album_list)
+# for a in song_list:
+#     print(a)
