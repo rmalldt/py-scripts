@@ -62,7 +62,5 @@ if __name__ == "__main__":
     jim.show_balance()
     jim.show_transactions()
 
-    jim.__balance = 0
+    jim.__balance = 0  # this won't refer to the instance property __balance
     jim.show_balance()
-
-    print(jim.__dict__)

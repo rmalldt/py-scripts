@@ -59,13 +59,11 @@ def testduck(duck: Any):
 
 if __name__ == "__main__":
 
-    # ----- Duck testin
-    # donald = Duck()
-    # testduck(donald)
+    # ----- Duck testing
+    donald = Duck()
+    testduck(donald)
 
-    # Even though Penguin is not Duck, but it has passes the Duck testing
+    # Even though Penguin is not Duck, but it passes the Duck testing
     # since it has all similar methods
-    # jim = Penguin()
-    # testduck(jim)
-
-    pass
+    jim = Penguin()
+    testduck(jim)

@@ -1,6 +1,3 @@
-from typing import Any
-
-
 class Player:
 
     def __init__(self, name) -> None:
