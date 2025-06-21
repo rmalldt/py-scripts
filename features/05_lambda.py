@@ -3,7 +3,7 @@ import os
 import functools
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from data import medals_dict
+from data.medals_dict import medal_table
 
 
 # ------------------ Map
@@ -141,7 +141,54 @@ def gotchas():
     result = bool(entries) and all(entries)
     print(result)  # False
 
+
 # ------------------ Lambdas
+
+lambda_add = lambda x, y:  x + y
+print(lambda_add(2,3)) # prints 5
+
+def add(x, y):
+    return x + y
+
+def sort_key(d: dict) -> str:
+    return d['country']
+
+# NEVER WRITE LAMBDA LIKE THIS
+l_double = lambda x: x * 2  # not PEP 8 compliant
+
+
+# Instead of above just write a regular function
+def double(x):
+    return x * 2
+
+
+def function_as_arg():
+    # Functions are first class citizen so they can be passed as arguments
+    # however the limitation is we cannot pass argument to the function
+    # being passed as argument.
+    # This is where lambda is useful.
+    medal_table.sort(key=sort_key)
+    print(medal_table)
+
+
+def lambda_as_arg():
+    medal_table.sort(key=lambda d: d['country'])
+    print(medal_table)
+
+
+def lambda_conditional():
+    sort_by = input('Enter key to sort: ')
+    sort_by = sort_by.lower()
+    print(sort_by)
+    medal_table.sort(key= lambda d: 'Rank' if sort_by == 'rank' else 'Country' )
+    print(medal_table)
+
+
+
+
+
+
+
 
 
 # ------------------ Test
@@ -153,7 +200,6 @@ def gotchas():
 # print(f"Comprehension filter: {timeit.timeit(conditional_comp, number=10000):.6f} sec")
 # print(f"Filter: {timeit.timeit(filter_meal, number=10000):.6f} sec")
 
-
 # numbers = [1, 2, 3, 4, 5]
 # reduce_sum(numbers)
 # sum(numbers)
@@ -164,3 +210,20 @@ def gotchas():
 # edge_case()
 # truthy_falsy()
 # gotchas()
+
+# function_as_arg()
+# lambda_as_arg()
+# print(l_double)  # <function <lambda> at 0x10473d760>
+# print(double)  # <function double at 0x10473d800>
+# print(l_double(2))
+# print(double(2))
+
+lambda_conditional()
+
+
+
+
+
+
+
+
