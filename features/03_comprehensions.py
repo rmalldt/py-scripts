@@ -8,7 +8,7 @@ def squares(nums):
     print(squares)
 
 
-# ------------------ Comprehension
+# ------------------ Comprehension Intro
 
 
 def squares_comp(nums):
@@ -49,6 +49,118 @@ def center_text_comp(*args):
     print(" " * left_margin, text)
 
 
+# ------------------ Comprehension vs Loops: Side Effects
+
+
+def get_squareof():
+    numbers = [1, 2, 3, 4, 5]
+    number = int(input("Enter a number whose square you want to find: "))
+
+    squares = []
+    for number in numbers:
+        print(number)
+        squares.append(number**2)
+
+    # Side-effect: variable number is used for both:
+    #               - storing user input
+    #               - loop control variable
+    # So, when the loop terminates, variable number has value last item in the loop,
+    # so, the result is always last item in the squares list.
+    index_pos = numbers.index(number)
+    print(squares[index_pos])
+
+
+def get_squareof_comp():
+    numbers = [1, 2, 3, 4, 5]
+    number = int(input("Enter a number whose square you want to find: "))
+
+    # Using comprehension eliminates this side effect.
+    squares = [number**2 for number in numbers]
+
+    index_pos = numbers.index(number)
+    print(squares[index_pos])
+
+
+# ------------------ Converting Loops to Comprehension
+
+
+def to_words():
+    text = input("Enter your text: ")
+
+    output = []
+    for word in text.split():
+        output.append((word, len(word)))  # tuple of word and word length
+    print(output)  # list of tuples
+
+
+def to_words_comp():
+    text = input("Enter your text: ")
+    output = {(word, len(word)) for word in text.split()}  # set of tuples
+    print(output)
+
+
+# ------------------ Conditional comprehensions
+
+
+menu = [
+    ["egg", "spam", "bacon"],
+    ["egg", "sausage", "bacon"],
+    ["egg", "spam"],
+    ["chicken", "chips"],
+]
+
+
+def conditional():
+    meals = []
+    for meal in menu:
+        if "spam" not in meal and "chicken" not in meal:
+            meals.append(meal)
+    print(meals)
+
+
+def conditional_comp():
+    meals = [meal for meal in menu if "spam" not in meal and "chicken" not in meal]
+    print(meals)
+
+
+def if_else():
+    meals = []
+    for meal in menu:
+        if "spam" not in meal:
+            meals.append(meal)
+        else:
+            meals.append("skipped")
+    print(meals)
+
+
+def if_else_comp():
+    meals = [meal if "spam" not in meal else "skipped" for meal in menu]
+    print(meals)
+
+
+def fizzbuzz():
+    for x in range(1, 20):
+        fizzbuzz = (
+            "fizz buzz"
+            if x % 15 == 0
+            else "fizz" if x % 3 == 0 else "buzz" if x % 5 == 0 else str(x)
+        )
+        print(fizzbuzz)
+
+
+def fizzbuzz_comp():
+    fizzbuzz = [
+        (
+            "fizz buzz"
+            if x % 15 == 0
+            else "fizz" if x % 3 == 0 else "buzz" if x % 5 == 0 else str(x)
+        )
+        for x in range(1, 20)
+    ]
+
+    print(fizzbuzz)
+
+
 # ------------------ Test
 
 numbers = range(1, 6)
@@ -59,4 +171,17 @@ numbers = range(1, 6)
 # text_comp(text)
 
 # center_text("bread, egg, bread and egg ")
-center_text_comp("bread", "egg", "bread and egg", 1, 2, 3, "eggs")
+# center_text_comp("bread", "egg", "bread and egg", 1, 2, 3, "eggs")
+
+# get_squareof()
+# get_squareof_comp()
+
+# to_words()
+# to_words_comp()
+
+# conditional()
+# conditional_comp()
+# if_else()
+# if_else_comp()
+# fizzbuzz()
+fizzbuzz_comp()
