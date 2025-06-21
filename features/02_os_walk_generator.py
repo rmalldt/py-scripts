@@ -47,7 +47,7 @@ def list_songs(albums):
 # ------------------ Test
 
 
-dir_path = "data/music"
+dir_path = "../data/music"
 
 walk_dir(dir_path)
 # walk_dir_format(dir_path)

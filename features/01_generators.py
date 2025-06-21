@@ -56,4 +56,4 @@ def consume_yield_value():
 
 # range_list_diff()
 # yield_example()
-consume_yield_value()
+# consume_yield_value()

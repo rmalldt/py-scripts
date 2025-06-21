@@ -42,29 +42,19 @@ def game_active():
 
 # ------------------ Truthy and falsy values
 def truthy_falsy():
-    mbool = False  # falsy
-    mnone = None  # falsy
-    answer = 0  # falsy
-    str = ""  # falsy
-    mlist = []  # falsy
-    mtuple = ()  # falsy
-    mdict = {}  # falsy
-    if mbool:
-        print("True")
-    elif mnone:
-        print("True")
-    elif answer:
-        print("True")
-    elif str:
-        print("True")
-    elif mlist:
-        print("True")
-    elif mtuple:
-        print("True")
-    elif mdict:
-        print("True")
-    else:
-        print("False")
+
+    print("Values interpreted as False in Python:")
+    print(
+        f"""Flase: {False} 
+None: {bool(None)}
+0: {bool(0)}
+0.0: {bool(0.0)}
+Empty string: {bool("")}
+Empty list: {bool([])}
+Empty tuple: {bool(())}
+Empty dict: {bool({})}
+"""
+    )
 
 
 # in and not in
@@ -123,8 +113,8 @@ def http_error(status):
 # eligible_to_vote()
 # guess_number()
 # game_active()
-# truthy_falsy()
+truthy_falsy()
 # in_notin()
 # pass_statement()
 # match_statement()
-print(f"Error message: {http_error(404)}")
+# print(f"Error message: {http_error(404)}")

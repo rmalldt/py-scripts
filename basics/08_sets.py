@@ -1,4 +1,3 @@
-from operator import le
 import sys
 import os
 
