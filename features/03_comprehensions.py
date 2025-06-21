@@ -81,24 +81,6 @@ def get_squareof_comp():
     print(squares[index_pos])
 
 
-# ------------------ Converting Loops to Comprehension
-
-
-def to_words():
-    text = input("Enter your text: ")
-
-    output = []
-    for word in text.split():
-        output.append((word, len(word)))  # tuple of word and word length
-    print(output)  # list of tuples
-
-
-def to_words_comp():
-    text = input("Enter your text: ")
-    output = {(word, len(word)) for word in text.split()}  # set of tuples
-    print(output)
-
-
 # ------------------ Conditional comprehensions
 
 
@@ -161,9 +143,79 @@ def fizzbuzz_comp():
     print(fizzbuzz)
 
 
+# ------------------ Nested Comprehension
+
+burgers = ["beef", "chicken", "spicy beans"]
+toppings = ["cheese", "egg", "beans", "spam"]
+
+
+def nestedfor():
+    meals = []
+    for burger in burgers:
+        for topping in toppings:
+            meals.append((burger, topping))
+    print(meals)
+
+
+def nested_comp():
+    meals = [(burger, topping) for burger in burgers for topping in toppings]
+    print(meals)
+
+
+def compare_nested_comps():
+    for meals in [(burger, topping) for burger in burgers for topping in toppings]:
+        print(meals)
+
+    print("*" * 80)
+
+    for meals in [[(burger, topping) for burger in burgers] for topping in toppings]:
+        print(meals)
+
+    print("*" * 80)
+
+    for meals in [[(burger, topping) for topping in toppings] for burger in burgers]:
+        print(meals)
+
+
+# ------------------ Converting Loops to Comprehension
+
+
+def to_words():
+    text = input("Enter your text: ")
+
+    output = []
+    for word in text.split():
+        output.append((word, len(word)))  # tuple of word and word length
+    print(output)  # list of tuples
+
+
+def to_words_comp():
+    text = input("Enter your text: ")
+    output = {(word, len(word)) for word in text.split()}  # set of tuples
+    print(output)
+
+
+def nested_loop():
+    multiples = []
+    for i in range(1, 6):
+        for j in range(1, 6):
+            multiples.append((i, i * j))
+    print(multiples)
+
+
+def nested_loop_comp():
+    multiples = [(i, i * j) for i in range(1, 6) for j in range(1, 6)]
+    print(multiples)
+
+
+def nested_loop_comp1():
+    for multiples in [[(i, i * j) for i in range(1, 6)] for j in range(1, 6)]:
+        print(multiples)
+
+
 # ------------------ Test
 
-numbers = range(1, 6)
+# numbers = range(1, 6)
 # squares(numbers)
 # squares_comp(numbers)
 
@@ -176,12 +228,20 @@ numbers = range(1, 6)
 # get_squareof()
 # get_squareof_comp()
 
-# to_words()
-# to_words_comp()
-
 # conditional()
 # conditional_comp()
 # if_else()
 # if_else_comp()
 # fizzbuzz()
-fizzbuzz_comp()
+# fizzbuzz_comp()
+
+# nestedfor()
+# nested_comp()
+# compare_nested_comps()
+
+
+# to_words()
+# to_words_comp()
+# nested_loop()
+# nested_loop_comp()
+# nested_loop_comp1()
