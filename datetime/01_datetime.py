@@ -1,5 +1,6 @@
 import datetime
 import locale
+import time
 
 
 def datetime_intro():
@@ -21,6 +22,11 @@ def datetime_intro():
     print(f"Today: {today}")
 
 
+def get_unixtimestamp():
+    print(int(time.time()))
+    print(int(datetime.datetime.now().timestamp()))
+
+
 def formatted_date():
     today = datetime.date.today()
 
@@ -32,6 +38,10 @@ def formatted_date():
     #   - %Y = year
     formatted_date = today.strftime("%A %d %B %Y")
     print(formatted_date)
+
+    # Parse string to datetime
+    parsed_date = datetime.datetime.strptime(formatted_date, "%A %d %B %Y")
+    print(parsed_date)
 
 
 def locale_intro():
@@ -66,8 +76,11 @@ def time_delta():
 
 # ------------------ Test
 
-datetime_intro()
+# datetime_intro()
+# get_unixtimestamp()
+
 # formatted_date()
+
 # locale_intro()
 
 # time_delta()

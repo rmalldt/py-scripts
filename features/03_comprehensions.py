@@ -4,7 +4,7 @@
 def squares(nums):
     squares = []
     for n in nums:
-        squares.append(n ** 2)
+        squares.append(n**2)
     print(squares)
 
 
@@ -13,11 +13,11 @@ def squares(nums):
 
 def squares_comp(nums):
     # List comprehension: note the brackets used.
-    squares = [number ** 2 for number in nums]
+    squares = [number**2 for number in nums]
     print(squares)
 
     # Set comprehension: note the curly brackets used.
-    squares = {number ** 2 for number in nums}
+    squares = {number**2 for number in nums}
     print(squares)
 
 
@@ -59,7 +59,7 @@ def get_squareof():
     squares = []
     for number in numbers:
         print(number)
-        squares.append(number ** 2)
+        squares.append(number**2)
 
     # Side-effect: variable number is used for both:
     #               - storing user input
@@ -75,7 +75,7 @@ def get_squareof_comp():
     number = int(input("Enter a number whose square you want to find: "))
 
     # Using comprehension eliminates this side effect.
-    squares = [number ** 2 for number in numbers]
+    squares = [number**2 for number in numbers]
 
     index_pos = numbers.index(number)
     print(squares[index_pos])
@@ -122,13 +122,23 @@ def if_else_comp():
 
 def fizzbuzz():
     for x in range(1, 20):
-        fizzbuzz = "fizz buzz" if x % 15 == 0 else "fizz" if x % 3 == 0 else "buzz" if x % 5 == 0 else str(x)
+        fizzbuzz = (
+            "fizz buzz"
+            if x % 15 == 0
+            else "fizz" if x % 3 == 0 else "buzz" if x % 5 == 0 else str(x)
+        )
         print(fizzbuzz)
 
 
 def fizzbuzz_comp():
-    fizzbuzz = ["fizz buzz" if x % 15 == 0 else "fizz" if x % 3 == 0 else "buzz" if x % 5 == 0 else str(x)
-                for x in range(1, 20)]
+    fizzbuzz = [
+        (
+            "fizz buzz"
+            if x % 15 == 0
+            else "fizz" if x % 3 == 0 else "buzz" if x % 5 == 0 else str(x)
+        )
+        for x in range(1, 20)
+    ]
     print(fizzbuzz)
 
 
@@ -200,6 +210,16 @@ def nested_loop_comp():
 def nested_loop_comp1():
     for multiples in [[(i, i * j) for i in range(1, 6)] for j in range(1, 6)]:
         print(multiples)
+
+
+keys = [
+    [("a", 1), ("b", 2), ("c", 3)],
+    [("d", 4), ("e", 5), ("f", 6)],
+    [("g", 7), ("h", 8), ("i", 9)],
+]
+
+chars = [key[0] for key_row in keys for key in key_row]
+print(f"Chars: {chars}")
 
 # ------------------ Test
 

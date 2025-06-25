@@ -6,7 +6,7 @@ print(a - b)  # 3
 print(a * b)  # 18
 print(a / b)  # 2.0
 print(a // b)  # 2 integer division, rounded to floor
-print(a % b)  # 0 module, the remainder after integer division
+print(a % b)  # 0 modulo, the remainder after integer division
 print(a**b)  # 216
 
 # ------------------ Operator Precedence

@@ -54,13 +54,13 @@ def filter_meal():
 # ------------------ Reduce
 
 
-def add(x, y):
+def add_func(x, y):
     return x + y
 
 
 # NOT RECOMMENDED
 def reduce_sum(nums):
-    reduced = functools.reduce(add, nums)
+    reduced = functools.reduce(add_func, nums)
     print(f"Reduced sum: {reduced}")
 
 
@@ -144,15 +144,7 @@ def gotchas():
 
 # ------------------ Lambdas
 
-lambda_add = lambda x, y:  x + y
-print(lambda_add(2,3)) # prints 5
-
-def add(x, y):
-    return x + y
-
-def sort_key(d: dict) -> str:
-    return d['country']
-
+# Lambda
 # NEVER WRITE LAMBDA LIKE THIS
 l_double = lambda x: x * 2  # not PEP 8 compliant
 
@@ -160,6 +152,10 @@ l_double = lambda x: x * 2  # not PEP 8 compliant
 # Instead of above just write a regular function
 def double(x):
     return x * 2
+
+
+def sort_key(d: dict) -> str:
+    return d["country"]
 
 
 def function_as_arg():
@@ -172,23 +168,16 @@ def function_as_arg():
 
 
 def lambda_as_arg():
-    medal_table.sort(key=lambda d: d['country'])
+    medal_table.sort(key=lambda d: d["country"])
     print(medal_table)
 
 
 def lambda_conditional():
-    sort_by = input('Enter key to sort: ')
+    sort_by = input("Enter key to sort: ")
     sort_by = sort_by.lower()
     print(sort_by)
-    medal_table.sort(key= lambda d: 'Rank' if sort_by == 'rank' else 'Country' )
+    medal_table.sort(key=lambda d: "Rank" if sort_by == "rank" else "Country")
     print(medal_table)
-
-
-
-
-
-
-
 
 
 # ------------------ Test
@@ -218,12 +207,4 @@ def lambda_conditional():
 # print(l_double(2))
 # print(double(2))
 
-lambda_conditional()
-
-
-
-
-
-
-
-
+# lambda_conditional()

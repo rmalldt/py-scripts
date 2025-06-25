@@ -2,7 +2,6 @@ from typing import Any
 
 
 class Wing:
-
     def __init__(self, ratio) -> None:
         self.ratio = ratio
 
@@ -16,7 +15,6 @@ class Wing:
 
 
 class Duck:
-
     ratio = 1.8
 
     def __init__(self) -> None:
@@ -37,7 +35,6 @@ class Duck:
 
 
 class Penguin:
-
     def walk(self):
         print("Penguin Walking...")
 
@@ -58,7 +55,6 @@ def testduck(duck: Any):
 
 
 if __name__ == "__main__":
-
     # ----- Duck testing
     donald = Duck()
     testduck(donald)
