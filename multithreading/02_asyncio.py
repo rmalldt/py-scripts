@@ -44,12 +44,12 @@ def eventloop_simulator():
 # A coroutine that simulates a long-running task
 async def fetch_data(id, delay):
     print("Fetching data!")
-    await asyncio.sleep(delay)  # simulate an network latency
+    await asyncio.sleep(delay)  # simulate an network request
     print(f"Data fetched, id: {id}")
     return {"id": {id}, "data": f"Data from coroutine {id}"}
 
 
-# ----- Create coroutine
+# ----- Create coroutine and execute synchronously
 
 
 async def create_coroutine_execute_synchronously():
@@ -72,7 +72,7 @@ async def create_coroutine_execute_synchronously():
     print("End main coroutine")
 
 
-# ----- Create task
+# ----- Create task and execute concurrently
 
 
 async def create_task_execute_concurrently():
@@ -211,7 +211,7 @@ async def using_semaphore_synchronization():
 # eventloop_simulator()
 
 # asyncio.run(create_coroutine_execute_synchronously())
-# asyncio.run(create_task_execute_concurrently())
+asyncio.run(create_task_execute_concurrently())
 
 # asyncio.run(execute_concurrently_gather_values())
 # asyncio.run(using_taskgroup())
