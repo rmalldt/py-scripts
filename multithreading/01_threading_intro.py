@@ -104,5 +104,5 @@ def run_multiplethreads():
 # start_mythread()
 # start_thread_with_threadpoolexecutor()
 
-# get_statuscode()
-run_multiplethreads()
+get_statuscode()
+# run_multiplethreads()

@@ -1,9 +1,10 @@
 """
 After Python 3.12
+    - The newer syntax is much cleaner and simpler.
+    - No need if extra imports to deal with the generic types.
 """
 
 type IntOrStr = int | str
-
 type ListOrSet[T] = list[T] | set[T]
 
 
@@ -32,7 +33,7 @@ def main() -> None:
 
     # String
     str_box = Box("Hello there!")
-    str_item = str_box.get_item()  # str_item => srt
+    str_item = str_box.get_item()  # str_item => str
     print(str_item)
 
     # List
