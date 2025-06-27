@@ -46,10 +46,40 @@ def consume_yield_value():
 
     big_list = []
     for val in big_range:
-        big_list.append(val)  # generator will only yield when this line called (lazy evaluation)
+        # generator will only yield when this line called (lazy evaluation)
+        big_list.append(val)
 
     print(f"big_range: {big_range}")
     print(f"big_list: {big_list}")  # [1,2,3,4]
+
+
+# ------------------ Generator Gotchas
+
+
+def generator_loop():
+    # This won't iterate through all the items
+    # next() pull only the first value -> 0, then stops.
+    # Only one iteration happens.
+    res = next(i for i in range(5))
+    print(res)  # 0
+
+    """
+    Equaivalent to above.
+     for i in range(5):
+        yield i 
+    """
+
+    # This iterates through the items until it finds the item
+
+    res = next((i for i in range(5) if i == 3))
+    print(res)  # 3
+
+    """
+    Equaivalent to above.
+    for i in range(5):
+        if i == 3:
+            yield i
+    """
 
 
 # ------------------ Test
@@ -57,3 +87,5 @@ def consume_yield_value():
 # range_list_diff()
 # yield_example()
 # consume_yield_value()
+
+generator_loop()
