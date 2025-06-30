@@ -40,8 +40,7 @@ def yield_example():
 def consume_yield_value():
     big_range = my_range(5)
 
-    # Consume the value yield by my_range
-    # First value 0 won't be available for the for loop to consume
+    # Consume the value yield by my_range, it consume the first value -> 0
     print(f"Calling next(): {next(big_range)}")
 
     big_list = []
@@ -50,7 +49,7 @@ def consume_yield_value():
         big_list.append(val)
 
     print(f"big_range: {big_range}")
-    print(f"big_list: {big_list}")  # [1,2,3,4]
+    print(f"big_list: {big_list}")  # [1,2,3,4] , value 0 is already consuemd above
 
 
 # ------------------ Generator Gotchas
@@ -70,7 +69,6 @@ def generator_loop():
     """
 
     # This iterates through the items until it finds the item
-
     res = next((i for i in range(5) if i == 3))
     print(res)  # 3
 
@@ -82,10 +80,19 @@ def generator_loop():
     """
 
 
+def generator_comprehension():
+    nums = [1, 2, 3, 4, 5]
+
+    # Return the first item found otherwise return None as default
+    res = next((i for i in nums if i == 3), None)
+    print(res)
+
+
 # ------------------ Test
 
 # range_list_diff()
 # yield_example()
 # consume_yield_value()
 
-generator_loop()
+# generator_loop()
+generator_comprehension()

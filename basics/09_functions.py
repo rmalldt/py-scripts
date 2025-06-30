@@ -149,8 +149,17 @@ def test_fizzbuzz() -> None:
         print(fizzbuzz(i))
 
 
-# ------------------ Spread arguments (*args)
-def spread_args() -> None:
+# ------------------ Variable arguments (*args)
+
+
+def variable_args(*args) -> None:
+    print(args)  # pack the variable arguments
+
+    for x in args:
+        print(x)
+
+
+def unpack_args() -> None:
     values = [1, 2, 3, 4, 5]
 
     print(values)  # [1, 2, 3, 4, 5]
@@ -160,11 +169,17 @@ def spread_args() -> None:
     print(1, 2, 3, 4, 5)  # same as above
 
 
-def variable_args(*args) -> None:
-    print(args)  # pack the variable arguments
+def unpack_dict():
+    item = {"id": 10, "name": "TV"}
 
-    for x in args:
-        print(x)
+    def test_unpack(id, name):
+        print(id, name)
+
+    """
+    **item unpacks:
+        {"id": 10, "name": "TV"} to id=10, name="TV"
+    """
+    test_unpack(**item)
 
 
 def test_arguments(p1, p2, *args, k, **kwargs) -> None:
@@ -191,7 +206,7 @@ def test_arguments(p1, p2, *args, k, **kwargs) -> None:
 # print(fibonacci(12))
 # test_fizzbuzz()
 
-# spread_args()
 # variable_args(1, 2, 3, 4, 5)
-
-test_arguments(1, 2, 3, 4, 5, k=6, key1=7, key2=8)
+# unpack_args()
+unpack_dict()
+# test_arguments(1, 2, 3, 4, 5, k=6, key1=7, key2=8)
