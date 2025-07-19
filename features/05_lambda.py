@@ -144,6 +144,7 @@ def gotchas():
 
 # ------------------ Lambdas
 
+
 # Lambda
 # NEVER WRITE LAMBDA LIKE THIS
 l_double = lambda x: x * 2  # not PEP 8 compliant
@@ -208,3 +209,20 @@ def lambda_conditional():
 # print(double(2))
 
 # lambda_conditional()
+
+
+# Using regular function
+def display(name):
+    print(name)
+
+
+# def higher_order_using_regular_function(func, name):
+#     func(name)
+# higher_order_using_regular_function(display, "Jim")
+
+
+def higher_order_using_lambda(func, name):
+    func(name)
+
+
+higher_order_using_lambda(lambda name: print(name), "Hello")
