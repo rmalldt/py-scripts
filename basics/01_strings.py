@@ -11,11 +11,6 @@ def string_concepts():
     # ----- String concatenation
     print("Hello" + " " + "there")
 
-    # ----- Input from console
-    greeting = "Hello"
-    name = input("Please enter your name: ")
-    print(greeting + " " + name)
-
     # ----- Escape Character: Newline, tab and Quote
     # Newlines
     splitString = "First line\nSecond line\nThird line"
@@ -43,6 +38,15 @@ def string_concepts():
     print(r"C:\Users\tim\notes.txt")  # use "r" raw string to escape the escape chars
 
 
+# ------------------ String Input from console
+
+
+def get_string_input():
+    greeting = "Hello"
+    name = input("Please enter your name: ")
+    print(greeting + " " + name)
+
+
 # ------------------ String Operations
 
 
@@ -59,12 +63,12 @@ def string_operations():
     # ----- String length
     print(len(parrot))  # 14
 
-    # ----- Slice (Subtrings)
-    print(parrot[0:6])  # Norweg, start index is inclusive and end index is exclusive
+    # ----- Slice (Subtrings) - start index is inclusive and stop index is exclusive
+    print(parrot[0:6])  # Norweg
     print(parrot[3:9])  # wegian
     print(parrot[10:])  # Blue
-    print(parrot[:9])  # Norwegian
-    print(parrot[:])  # Norwegian Blue
+    print(parrot[:9])  # Norwegian, default start index is 0
+    print(parrot[:])  # Norwegian Blue, default start and stop indexes
 
     # Slice with negative index
     print(parrot[-4:-2])  # Bl
@@ -72,14 +76,14 @@ def string_operations():
     print(parrot[-4:])  # Blue
 
     # Slice with steps
-    print(parrot[0:6:2])  # Nre, 0: start index, 6: end index, 2: step
-    print(parrot[0:6:3])  # Nw, 0: start index, 6: end index, 3: step
-    print(parrot[0::2])  # NreinBu, 0: start index, 2: step
+    print(parrot[0:6:2])  # Nre, 0: start index, 6: stop index, 2: step
+    print(parrot[0:6:3])  # Nw, 0: start index, 6: stop index, 3: step
+    print(parrot[0::2])  # NreinBu, 0: start index, default stop index, 2: step
 
     # Slice backwards
     strLen = len(parrot)
-    print(parrot[13::-1])  # eulB naigewroN
-    print(parrot[::-1])  # eulB naigewroN
+    print(parrot[13::-1])  # eulB naigewroN, default stop index
+    print(parrot[::-1])  # eulB naigewroN, default start and stop index
 
     # ----- Concatenation
     str1 = "hello "
@@ -142,6 +146,8 @@ def string_format():
     print(f"Id: {id}, Name: {name}")
 
     for i in range(1, 5):
+        # :<6 field width,left aligned
+        # .2f precision
         print(f"Number {i} squared is {i ** 2:<6.2f} and cubed is {i ** 3:<8.2f}")
 
 

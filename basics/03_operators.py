@@ -1,4 +1,7 @@
 # ------------------ Operators
+import math
+
+
 a = 6
 b = 3
 print(a + b)  # 9
@@ -18,3 +21,10 @@ print(a**b)  # 216
 print(a + b / 3 - 4 * 2)  # -1
 print(a + (b / 3) - (4 * 2))  # -1
 print((((a + b) / 3) - 4) * 2)  # -2
+
+
+# Comparing floats
+
+print(0.1 * 3 == 0.3)  # False
+print(f"Multiply: {0.1 * 3}")  # 0.30000000000000004
+print(f"Equals: {math.isclose(0.1 * 3, 0.3)}")  # True

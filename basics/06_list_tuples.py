@@ -28,10 +28,10 @@ def list_operations():
     fruits.append("strawberry")  # add item to the end of the list
     fruits.extend(["apple", "orange"])  # add lists
 
-    # Insert, Remove and Pop
+    # Insert, Pop and Remove
+    fruits.pop()  # remove last item
     fruits.insert(0, "grapes")  # insert at given index
     fruits.remove("apple")  # remove first item whose value match
-    fruits.pop()  # remove last item
 
     # Count: Count the number occurences of given item in the list
     print(f"Orange count: {fruits.count("orange")}")

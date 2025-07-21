@@ -56,7 +56,7 @@ print(type(mdict))
 mset = {"apple", "ball", "cat"}
 print(type(mset))
 
-# forzenset
+# frozenset
 # - immutable
 # - duplicates not allowed
 # - not ordered
