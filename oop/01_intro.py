@@ -2,7 +2,7 @@
 Class:          Template for creating objects. All objects create using the same class will have the same characteristics.
 Object:         An instance of a class.
 Instantiate:    Create an instance of a class.
-Attribute:       A variable bound to an instance of a class.
+Attribute:      A variable bound to an instance of a class.
 Method:         A function in a class.
 
 self:           Reference to the instance of a class

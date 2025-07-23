@@ -19,9 +19,7 @@ def start_thread():
     #   - args: List/tuple of arguments to be passed to the target
     t = threading.Thread(
         target=print_numbers,
-        args=[
-            3,
-        ],
+        args=[3],
     )  # create new thread
 
     t.start()  # start the thread
@@ -102,7 +100,7 @@ def run_multiplethreads():
 
 # start_thread()
 # start_mythread()
-# start_thread_with_threadpoolexecutor()
+start_thread_with_threadpoolexecutor()
 
-get_statuscode()
+# get_statuscode()
 # run_multiplethreads()

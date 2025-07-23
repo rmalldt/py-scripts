@@ -113,7 +113,7 @@ def http_error(status):
 # eligible_to_vote()
 # guess_number()
 # game_active()
-truthy_falsy()
+# truthy_falsy()
 # in_notin()
 # pass_statement()
 # match_statement()
