@@ -47,7 +47,7 @@ def with_file(filepath: str) -> None:
     # Open the file with filepath and get the file object to use
     with open(filepath, "r") as file:
         for line in file:
-            print(line.rstrip())
+            print(line.strip())
 
 
 # read(): Read from the underlying buffer (containing all the characters of the file)
