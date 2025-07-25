@@ -3,7 +3,6 @@ from typing import override
 
 
 class Enemy:
-
     def __init__(
         self,
         name: str = "enemy",
