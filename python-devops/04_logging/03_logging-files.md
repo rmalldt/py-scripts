@@ -9,7 +9,7 @@
 ## Size-Based Rotation with `RotatingFileHandler`
 
 - `RotatingFileHandler` rotates when the file reaches `maxBytes`.
-- `backupCount` determines how many old files to keep (`.1`, `.2`, …).
+- `backupCount` determines how many old files to keep (`.1`, `.2`, …). E.g., if we have `backupCount=2` and if new backup file is created, then `.1` will be `.2` and `.2` will be the new backup file.
 - New rotations rename existing backups, deleting the oldest beyond `backupCount`.
 
 ## Time-Based Rotation with `TimedRotatingFileHandler`

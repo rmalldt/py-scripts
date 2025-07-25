@@ -1,7 +1,7 @@
 # Introduction to Structured Logging
 
 - Plain-text logs are hard to parse and brittle to format changes.
-- Structured logging records events as key-value data, making machine parsing trivial.
+- Structured logging records events as **key-value data**, making machine parsing trivial.
 - JSON is a de-facto standard: human-readable yet easily ingested by ELK, Splunk, DataDog, etc.
 - Python’s `python-json-logger` integrates JSON output into the standard `logging` workflow.
 
@@ -23,3 +23,10 @@
 - Use `logger.exception(...)` inside an `except` block.
 - The `JsonFormatter` automatically adds an `exc_info` key with the traceback.
 - This preserves full error context for downstream analysis.
+
+## Questions
+
+- **Question 1:**
+  Why is structured logging (e.g., in JSON format) is strongly preferred over plain-text logging in production environments?
+
+  **Answer:** Structured logs are human-readable key:value pairs that can be reliably parsed by machines, allowing for powerful filtering, quering and aggregation. Plain-text logs require brittle and slow regex to parse.
