@@ -1,2 +1,3 @@
 Setting=Value
 Other=Another
+100
