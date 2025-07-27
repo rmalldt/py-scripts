@@ -3,6 +3,6 @@ services:
   web:
     image: myapp:latest
     ports:
-      - "8000:80"
+      - '8000:80'
   redis:
     image: redis:alpine
