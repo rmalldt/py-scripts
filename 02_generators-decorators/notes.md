@@ -2,7 +2,7 @@
 
 ### Iterable
 
-An object that can be looped over. It's anything we can put in the right side of the `in` keword in a `for` loop. E.g., lists, tuples, strings, dictionaries, sets, files, and range objects
+An object that can be looped over. It's anything we can put in the right side of the `in` keword in a `for` loop. E.g., strings, lists, tuples, range, sets, dictionaries and files objects.
 
 - An object is considered **iterable** if it implements the `__iter__()` special method.
 
