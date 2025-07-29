@@ -1,12 +1,12 @@
 from __future__ import annotations
-from typing import Self, Optional
+from typing import Self
 
-# Section: Classes as Type Hints
+# --------------- Section: Classes as Type Hints
 
 
 class Server:
     def __init__(
-        self,
+        self,  # auto-annotated to this Class type 'Server' in this case
         hostname: str,
         ip_address: str,
         os_type: str = "Linux",
@@ -17,9 +17,7 @@ class Server:
         self.is_online: bool = False
 
     def connect(self) -> None:
-        print(
-            f"Connecting to {self.hostname} (IP address: {self.ip_address})"
-        )
+        print(f"Connecting to {self.hostname} (IP address: {self.ip_address})")
         self.is_online = True
         print(f"{self.hostname} is online.")
 
@@ -27,58 +25,47 @@ class Server:
         return "online" if self.is_online else "offline"
 
 
-def deploy_app_to_server(
-    target_server: Server, app_name: str
-) -> bool:
-    print(
-        f"Deploying {app_name} to server: {target_server.hostname}"
-    )
+def deploy_app_to_server(target_server: Server, app_name: str) -> bool:
+    print(f"Deploying {app_name} to server: {target_server.hostname}")
 
     if not target_server.is_online:
         target_server.connect()
 
-    print(
-        f"Deployment of {app_name} to {target_server.hostname} successful."
-    )
+    print(f"Deployment of {app_name} to {target_server.hostname} successful.")
     return True
 
 
-web_server = Server(
-    hostname="web01.dev.local", ip_address="10.0.1.10"
-)
-db_server = Server(
-    hostname="db01.dev.local", ip_address="10.0.2.20"
-)
+web_server = Server(hostname="web01.dev.local", ip_address="10.0.1.10")
+db_server = Server(hostname="db01.dev.local", ip_address="10.0.2.20")
 
 deploy_app_to_server(web_server, "FrontendApp")
 deploy_app_to_server(db_server, "UserDBApi")
 
 
-# Section: Hinting Methods Within a Class
+# --------------- Section: Methods returning the Class itself
+
+# Methods returning the Class itself allows to for method chaining i.e.
+# next methods can be called immediately on the result.
 
 
 class Calculator:
     def __init__(self, initial_value: int | float = 0):
         self.total: int | float = initial_value
 
-    def add(self, value: int | float) -> Self:
+    def add(self, value: int | float) -> Self:  # return self
         self.total += value
-
         return self
 
     def subtract(self, value: int | float) -> Self:
         self.total -= value
-
         return self
 
     def multiply_by(self, value: int | float) -> Self:
         self.total *= value
-
         return self
 
     def divide_by(self, value: int | float) -> Self:
         self.total /= value
-
         return self
 
     def get_total(self) -> int | float:
@@ -86,18 +73,19 @@ class Calculator:
 
 
 my_calc = Calculator(1)
-
 print(my_calc.add(2).subtract(1).multiply_by(10).get_total())
 
-# Section: Forward References (Strings)
+
+# --------------- Section: Forward References (Strings)
 
 
+# NOTE: Must import `__future__` in order use Forward References.
+# E.g., using Employee type inside Employee class where Employee class is not fully defined
+# by the time we actually use inside it.
 class Employee:
-    def __init__(
-        self, name: str, manager: Optional[Employee] = None
-    ) -> None:
+    def __init__(self, name: str, manager: Employee | None = None) -> None:
         self.name: str = name
-        self.manager: Optional[Employee] = manager
+        self.manager: Employee | None = manager
         self.reports: list[Employee] = []
 
     def add_report(self, report: Employee) -> None:

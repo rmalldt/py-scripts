@@ -1,6 +1,6 @@
 # Introduction to Generics
 
-- Generic types let you write reusable, type-safe functions and classes that work uniformly across different data types.
+- Generic types let you write reusable, **type-safe functions and classes** that work uniformly across different data types.
 - They preserve the relationship between input and output types, enabling MyPy to infer precise types instead of falling back to `Any`.
 - The `typing` module’s `TypeVar` and `Generic` primitives unlock this capability.
 

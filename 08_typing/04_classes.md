@@ -5,13 +5,13 @@
 
 # Classes as Type Hints
 
-- Any class you define becomes a valid type; you can annotate parameters and return values with it.
-- MyPy will ensure that calls to such functions pass instances of the expected class and that attribute access matches the class definition.
+- Any class you define becomes a **valid type**; you can **annotate parameters** and **return values** with it.
+- **MyPy** will ensure that calls to such functions pass instances of the expected class and that attribute access matches the class definition.
 
 # Hinting Methods Within a Class
 
-- Inside class methods, `self` is implicitly the class type; annotate other parameters and return types normally.
-- MyPy checks method bodies to ensure you only access attributes and call methods that exist on the class.
+- Inside class methods, `self` is **implicitly the class type**; annotate other parameters and return types normally.
+- **MyPy** checks method bodies to ensure you only access attributes and call methods that exist on the class.
 - **New in Python 3.11**: You can use `typing.Self` for methods that return the instance, for example `def clone(self) -> Self:`.
 
 # Forward References (Strings)

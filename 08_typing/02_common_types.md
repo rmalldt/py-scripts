@@ -43,8 +43,8 @@
 
 ## Any for Unrestricted Types
 
-- `Any` disables type checking for the annotated part, useful during gradual typing of legacy code or when truly dynamic types are needed.
-- Overuse negates the benefits of static analysis, so prefer specific types whenever possible.
+- `Any` **disables** type checking for the annotated part, useful during gradual typing of legacy code or when truly dynamic types are needed.
+- Overuse **negates** the benefits of static analysis, so prefer specific types whenever possible.
 
 ## Common Pitfalls & How to Avoid Them
 

@@ -1,16 +1,17 @@
 # Introduction
 
-- Python is a dynamically typed language, meaning you can assign values to variables without declaring their types, and type checking happens at runtime.
-- While this offers rapid development and flexibility, it can lead to ambiguity and late discovery of type-related bugs in larger or collaborative projects.
-- Type hints (PEP 484, introduced in Python 3.5) let you optionally annotate your code with expected types for variables, function parameters, and return values without changing Python’s runtime behavior.
-- These annotations are leveraged by static type checkers (e.g., MyPy), IDEs for better autocompletion and error highlighting, and by developers for clearer, more maintainable code.
+- Python is a **dynamically typed language**, meaning you can assign values to variables without declaring their types, and **type checking happens at runtime**.
+- While this offers rapid development and flexibility, it can lead to **ambiguity** and **late discovery of type-related bugs** in larger or collaborative projects.
+- Type hints (PEP 484, introduced in Python 3.5) let you optionally annotate your code with expected types for variables, function parameters, and return values **without changing Python’s runtime behavior**.
+- These annotations are leveraged by **static type checkers** (e.g., MyPy), IDEs for better autocompletion and error highlighting, and by developers for clearer, more maintainable code.
 
 ## Why Use Type Hints?
 
-- Type hints improve readability by making explicit what data types functions expect and return, which is invaluable when navigating unfamiliar or legacy code.
-- Static type checkers like MyPy can catch mismatches between hinted and actual types before the code runs, surfacing bugs early in the development cycle.
-- IDEs (e.g., VS Code, PyCharm) use hints to enhance autocompletion accuracy, provide inline type checking, and support safe refactoring.
-- Explicit annotations act as a contract in collaborative environments, helping team members understand and correctly use each other’s code.
+- **Type hints allow for the detection of type-related errors before the script is run, catching potential bugs early in the development lifecycle**.
+- Type hints **improve readability** by making explicit what data types functions expect and return, which is invaluable when navigating unfamiliar or legacy code.
+- Static type checkers like MyPy can **catch mismatches between hinted and actual types before the code runs**, surfacing bugs early in the development cycle.
+- IDEs (e.g., VS Code, PyCharm) use hints to **enhance autocompletion accuracy**, provide inline type checking, and support safe refactoring.
+- **Explicit annotations act as a contract in collaborative environments**, helping team members understand and correctly use each other’s code.
 - For example, annotating a function as `def process_user_data(user: dict) -> bool:` makes it clear that the function expects a `dict` and returns a `bool`.
 
 ## Basic Type Hint Syntax
@@ -31,9 +32,9 @@
 
 ## Python Remains Dynamically Typed
 
-- Type hints do not alter Python’s runtime behavior; passing arguments of the wrong type won’t raise a hint-related error unless an operation in the code fails for the actual type.
+- **Type hints do not alter Python’s runtime behavior**; passing arguments of the wrong type won’t raise a hint-related error unless an operation in the code fails for the actual type.
 - For instance, calling `process_id("user-123")` on a function annotated as `def process_id(user_id: int) -> None:` runs without a hint-triggered error, though passing a string where an integer is expected may lead to a `TypeError` later if arithmetic is attempted.
-- Static analysis tools flag these mismatches before execution, but Python itself enforces types only when invalid operations occur at runtime.
+- Static analysis tools flag these mismatches before execution, **but Python itself enforces types only when invalid operations occur at runtime**.
 
 ## Common Pitfalls & How to Avoid Them
 
