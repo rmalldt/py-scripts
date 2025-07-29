@@ -42,3 +42,11 @@
 - **Over-hinting or incorrect hints:** Overly complex or wrong annotations can confuse readers and static checkers; start simple and use `Any` for truly dynamic values.
 - **Forgetting `typing` imports:** When using `List[int]`, `Optional[str]`, etc., remember to import them from the `typing` module (unless you rely on built-in generics in Python 3.9+).
 - **Relying on hints for untyped libraries:** If a third-party library lacks type hints or has them in separate stub files, static analysis may be limited—consult documentation or stub packages.
+
+## VSCode Pylance Settings
+
+<img src="../images/vscode1.png" alt="illustration" height="300">
+
+<br>
+
+<img src="../images/vscode2.png" alt="illustration" height="300">
