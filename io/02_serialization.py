@@ -79,7 +79,7 @@ def get_temperature_data_from_url():
 data_path = "../data/jsons/languages.json"
 # serialize_data(data_path, data)
 # serialize_data(datatuples, data_path)  # tuples is serialzed as list
-# print("Data:", deserialize_data(data_path))
+print("Data:", deserialize_data(data_path))
 
 # temperature_data()
 # get_temperature_data_from_url()

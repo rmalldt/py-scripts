@@ -97,4 +97,5 @@ celerybeat-schedule
 .pyre/
 .env*
 data/music
+dsa
 adhoc.py 

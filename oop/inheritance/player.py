@@ -35,13 +35,21 @@ class Player:
     level = property(_get_level, _set_level)
 
     # Using decorators
+    # getter returns self._score (NOTE: _score, if used without underscore infinite recursion)
     @property
     def score(self):
         return self._score
 
+    # setter sets self_score (NOTE: _score, if used without underscore infinite recursion)
     @score.setter
     def score(self, score):
         self._score = score
 
     def __str__(self) -> str:
         return f"Name: {self.name}, Lives: {self.lives}, Level: {self.level}, Score: {self.score}"
+
+
+# Benefit of using decorators for Setter and Getter
+player = Player("Jim")
+player.score = 100  # setter
+print(player.score)  # getter
